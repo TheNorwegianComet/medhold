@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Space+Mono:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9E3D4;font-family:'Archivo',sans-serif}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(21,18,10,.1);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}
+.dv-tid{font:700 10px 'Space Mono',monospace;padding:3px 7px;background:#15120A;color:#F2EDE1;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 'Archivo',sans-serif;color:#15120A}
+.dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:700 10.5px 'Space Mono',monospace;padding:3px 7px;background:rgba(21,18,10,.09);color:#15120A;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11.5px/1.3 'Archivo',sans-serif;color:rgba(21,18,10,.55)}
+.dv-card{max-width:100%;background:#FBF8F0;border:1px solid rgba(21,18,10,.14);border-radius:12px;box-shadow:0 1px 3px rgba(21,18,10,.06);overflow:hidden}
+.dv-opt:target .dv-oid{background:#BC5F2A;color:#fff}
+.dv-next{margin:22px 0 0;font:12px/1.5 'Archivo',sans-serif;color:rgba(21,18,10,.5)}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Medhold v2 — Oryzo-inspirert: kork, krem, sort blekk, mono-spesifikasjoner. Samme innhold og flyt.</span></div>
+<div class="dv-opts">
+
+<!-- ============================== 1a LANDINGSSIDE ============================== -->
+<div class="dv-opt" id="1a" data-screen-label="1a Landingsside">
+  <div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Landingsside — desktop 1280</div>
+  <div class="dv-card" style="width:1280px;background:#F2EDE1;color:#15120A">
+
+    <!-- nav -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 56px;border-bottom:1px solid #15120A;background:#F2EDE1">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:28px;height:28px;background:#BC5F2A;border-radius:8px;display:grid;place-items:center;color:#F8F3E8;font-family:'Space Mono',monospace;font-weight:700;font-size:15px">M</div>
+        <span style="font-stretch:125%;font-weight:800;font-size:19px;letter-spacing:.02em;text-transform:uppercase">Medhold</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:26px;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.07em;color:#15120A">
+        <span style="text-transform:uppercase">Slik virker det</span><span style="text-transform:uppercase">Eksempelsaker</span><span style="text-transform:uppercase">Pris</span>
+        <div style="background:#15120A;color:#F2EDE1;padding:11px 20px;border-radius:99px;cursor:pointer;text-transform:uppercase;font-size:11.5px" style-hover="background:#000">{{ heroCta }}</div>
+      </div>
+    </div>
+
+    <!-- hero -->
+    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:56px;padding:64px 56px 56px;align-items:center">
+      <div>
+        <div style="display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#BC5F2A;border:1px solid #E3C4A4;background:#F8F0E4;padding:7px 13px;border-radius:99px;margin-bottom:22px">{{ heroKicker }}</div>
+        <h1 style="margin:0 0 20px;font-stretch:125%;font-size:60px;line-height:.98;letter-spacing:-1px;font-weight:800;text-transform:uppercase;text-wrap:balance">{{ heroH1 }}</h1>
+        <p style="margin:0 0 30px;font-size:17.5px;line-height:1.6;color:#524C3E;max-width:520px;text-wrap:pretty">{{ heroSub }}</p>
+        <div style="display:flex;gap:12px;align-items:center">
+          <div style="background:#15120A;color:#F2EDE1;padding:16px 28px;border-radius:99px;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer" style-hover="background:#000">{{ heroCta }}</div>
+          <div style="padding:16px 24px;border-radius:99px;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#15120A;border:1.5px solid #15120A;cursor:pointer" style-hover="background:#EAE3D2">Se en eksempelsak</div>
+        </div>
+        <div style="display:flex;gap:18px;margin-top:24px;font-family:'Space Mono',monospace;font-size:11px;color:#857D6A;letter-spacing:.03em">
+          <span>GRATIS SJEKK · 2 MIN</span><span>/</span><span>FULL ANALYSE FRA 349 KR</span><span>/</span><span>INGEN ADVOKAT</span>
+        </div>
+      </div>
+
+      <!-- hero-mock: spesifikasjonsdiagram -->
+      <div style="position:relative">
+        <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:16px;padding:24px 24px 18px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;font-family:'Space Mono',monospace">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.08em">FIG. 01 — OPPGJØRSANALYSE</div>
+            <div style="font-size:10.5px;color:#857D6A;letter-spacing:.05em">SAK NO. 2417-VS</div>
+          </div>
+          <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.06em;color:#857D6A;margin-bottom:6px">SELSKAPETS TILBUD</div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+            <div style="height:16px;width:60%;background:#E6DDC8;border:1px solid #15120A;border-radius:4px"></div>
+            <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:14px;white-space:nowrap">60 000 KR</div>
+          </div>
+          <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.06em;color:#857D6A;margin-bottom:6px">DET VILKÅRENE GIR DEG RETT TIL</div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+            <div style="height:16px;width:100%;background:#BC5F2A;border:1px solid #15120A;border-radius:4px"></div>
+            <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:14px;color:#BC5F2A;white-space:nowrap">≈ 99 300 KR</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;justify-content:space-between;align-items:center;background:#F6DFD3;border:1px solid #15120A;border-radius:9px;padding:10px 13px">
+              <span style="font-size:13px;font-weight:600;color:#7E2A10">Utelatt: riving og avfall</span>
+              <span style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;background:#FBF8F0;border:1px solid #E5BBA4;border-radius:5px;padding:2px 7px;color:#A83415">§ 5.1</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;background:#F3E7C8;border:1px solid #15120A;border-radius:9px;padding:10px 13px">
+              <span style="font-size:13px;font-weight:600;color:#6E4A08">Underpriset: membran og flis</span>
+              <span style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;background:#FBF8F0;border:1px solid #E0CB94;border-radius:5px;padding:2px 7px;color:#96650F">§ 5.2</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;background:#F6DFD3;border:1px solid #15120A;border-radius:9px;padding:10px 13px">
+              <span style="font-size:13px;font-weight:600;color:#7E2A10">Aldersfradrag: 30 % — vilkårene sier maks 20 %</span>
+              <span style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;background:#FBF8F0;border:1px solid #E5BBA4;border-radius:5px;padding:2px 7px;color:#A83415">§ 6.3</span>
+            </div>
+          </div>
+          <div style="margin-top:16px;padding-top:12px;border-top:1px dashed #C9C0A8;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.04em;color:#857D6A">[ 3 AVVIK ] SJEKKET MOT GJENSIDIGE BOLIG PLUSS (2025). ET ESTIMAT — IKKE EN GARANTI.</div>
+        </div>
+        <div style="position:absolute;top:-16px;right:-14px;transform:rotate(6deg);background:#BC5F2A;color:#FBF8F0;font-family:'Space Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.1em;padding:9px 15px;border-radius:99px;border:1.5px solid #15120A">LAVT TILBUD</div>
+      </div>
+    </div>
+
+    <!-- trust band -->
+    <div style="background:#BC5F2A;color:#FBF3E6;text-align:center;padding:17px 56px;font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border-top:1px solid #15120A;border-bottom:1px solid #15120A">{{ band }}</div>
+
+    <!-- slik virker det -->
+    <div style="padding:64px 56px">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;color:#BC5F2A;margin-bottom:10px">( 01 ) — PROSESSEN</div>
+      <h2 style="margin:0 0 8px;font-stretch:125%;font-size:34px;font-weight:800;letter-spacing:-0.5px;text-transform:uppercase">Slik virker det</h2>
+      <p style="margin:0 0 32px;color:#524C3E;font-size:16px">Fra tilbud til velbegrunnet klage på under ti minutter.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px">
+        <sc-for list="{{ hvordan }}" as="h" hint-placeholder-count="3">
+          <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:14px;padding:26px 24px">
+            <div style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#BC5F2A;margin-bottom:14px">[ {{ h.n }} ]</div>
+            <div style="font-stretch:125%;font-weight:800;font-size:18px;text-transform:uppercase;letter-spacing:.01em;margin-bottom:8px">{{ h.t }}</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#524C3E;text-wrap:pretty">{{ h.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- eksempelsaker -->
+    <div style="background:#15120A;padding:60px 56px;color:#F2EDE1;border-top:1px solid #15120A">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px">
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;color:#D98E4F;margin-bottom:10px">( 02 ) — DOKUMENTERTE UTFALL</div>
+          <h2 style="margin:0;font-stretch:125%;font-size:34px;font-weight:800;letter-spacing:-0.5px;text-transform:uppercase">Saker som lignet på <span style="font-family:'Source Serif 4',serif;font-style:italic;text-transform:none;font-weight:600;font-stretch:100%">din</span></h2>
+        </div>
+        <span style="font-family:'Space Mono',monospace;font-size:10.5px;color:#A79E8B;letter-spacing:.04em">ANONYMISERT · PILOTPERIODEN · UTFALL VARIERER</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px">
+        <sc-for list="{{ eksempler }}" as="e" hint-placeholder-count="3">
+          <div style="background:rgba(242,237,225,.04);border:1px solid rgba(242,237,225,.25);border-radius:14px;padding:24px">
+            <div style="display:flex;justify-content:space-between;margin-bottom:20px;font-family:'Space Mono',monospace">
+              <span style="border:1px solid rgba(242,237,225,.35);border-radius:99px;padding:4px 11px;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase">{{ e.tag }}</span>
+              <span style="color:#A79E8B;font-size:10.5px;padding:5px 0;letter-spacing:.05em;text-transform:uppercase">{{ e.sted }}</span>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;font-family:'Space Mono',monospace">
+              <span style="font-size:15px;color:#A79E8B;text-decoration:line-through;text-decoration-color:#BC5F2A;text-decoration-thickness:2px">{{ e.fra }}</span>
+              <span style="color:#A79E8B;font-size:13px">→</span>
+              <span style="font-size:24px;font-weight:700">{{ e.til }}</span>
+            </div>
+            <div style="display:inline-block;background:#BC5F2A;color:#FBF3E6;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.04em;border-radius:99px;padding:4px 11px;margin-bottom:16px">{{ e.diff }}</div>
+            <div style="font-size:13.5px;line-height:1.55;color:#CBC2AC;border-top:1px solid rgba(242,237,225,.18);padding-top:12px"><span style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.08em;color:#F2EDE1">FLAGGET: </span>{{ e.flagget }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- hva vi ser etter -->
+    <div style="padding:64px 56px">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;color:#BC5F2A;margin-bottom:10px">( 03 ) — KONTROLLPUNKTER</div>
+      <h2 style="margin:0 0 8px;font-stretch:125%;font-size:34px;font-weight:800;letter-spacing:-0.5px;text-transform:uppercase">Vi leser det med liten skrift. <span style="font-family:'Source Serif 4',serif;font-style:italic;text-transform:none;font-weight:600;font-stretch:100%;color:#BC5F2A">Ordrett.</span></h2>
+      <p style="margin:0 0 30px;color:#524C3E;font-size:16px;max-width:640px">Hvert funn peker på et konkret punkt i dine egne vilkår — ikke på generelle råd. Dette er de vanligste grepene vi fanger opp:</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px 20px">
+        <sc-for list="{{ serEtter }}" as="s" hint-placeholder-count="6">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;background:#FBF8F0;border:1px solid #15120A;border-radius:11px;padding:15px 18px">
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="width:8px;height:8px;border-radius:99px;background:#BC5F2A;flex:none"></div>
+              <span style="font-size:15px;font-weight:600">{{ s.t }}</span>
+            </div>
+            <span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#BC5F2A;background:#F8F0E4;border:1px solid #E3C4A4;border-radius:6px;padding:3px 9px;white-space:nowrap">{{ s.ref }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- pris -->
+    <div style="padding:8px 56px 64px">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;color:#BC5F2A;margin-bottom:10px">( 04 ) — PRIS</div>
+      <h2 style="margin:0 0 28px;font-stretch:125%;font-size:34px;font-weight:800;letter-spacing:-0.5px;text-transform:uppercase">Velg din vei</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:860px">
+        <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:16px;padding:28px">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.08em;margin-bottom:8px;color:#857D6A">GRATIS SJEKK</div>
+          <div style="font-stretch:125%;font-size:44px;font-weight:800;margin-bottom:16px">0 KR</div>
+          <div style="display:flex;flex-direction:column;gap:9px;font-size:14.5px;color:#524C3E;line-height:1.45">
+            <div>Svar på om tilbudet ser lavt ut</div>
+            <div>Antall avvik vi fant</div>
+            <div>Estimert differanse</div>
+          </div>
+        </div>
+        <div style="background:#FBF8F0;border:2px solid #15120A;border-radius:16px;padding:28px;position:relative">
+          <div style="position:absolute;top:-13px;left:24px;background:#BC5F2A;color:#FBF3E6;font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.08em;border:1px solid #15120A;border-radius:99px;padding:4px 12px">NÅR DU VIL KLAGE</div>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.08em;margin-bottom:8px;color:#857D6A">FULL ANALYSE + KLAGEBREV</div>
+          <div style="font-stretch:125%;font-size:44px;font-weight:800;margin-bottom:16px">349 KR</div>
+          <div style="display:flex;flex-direction:column;gap:9px;font-size:14.5px;color:#524C3E;line-height:1.45">
+            <div>Alle avvik, med referanse til vilkårspunkt og side</div>
+            <div>Ferdig klagebrev — klart til å sendes</div>
+            <div>Plan for veien videre, med frister</div>
+            <div>Avslag? Vi fyller ut Finansklagenemnda-skjemaet gratis</div>
+          </div>
+          <div style="margin-top:18px;background:#15120A;color:#F2EDE1;text-align:center;padding:13px;border-radius:99px;font-family:'Space Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer" style-hover="background:#000">Start med gratis sjekk</div>
+        </div>
+      </div>
+      <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.04em;color:#857D6A">INGEN ABONNEMENT. DU BETALER KUN NÅR DU VELGER Å KLAGE.</div>
+    </div>
+
+    <!-- faq -->
+    <div style="padding:0 56px 64px">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;color:#BC5F2A;margin-bottom:10px">( 05 ) — FAQ</div>
+      <h2 style="margin:0 0 24px;font-stretch:125%;font-size:26px;font-weight:800;letter-spacing:-0.3px;text-transform:uppercase">Vanlige spørsmål</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 40px">
+        <sc-for list="{{ faq }}" as="f" hint-placeholder-count="4">
+          <div style="border-top:1px solid #15120A;padding-top:14px">
+            <div style="font-weight:700;font-size:15.5px;margin-bottom:6px">{{ f.q }}</div>
+            <div style="font-size:14px;line-height:1.6;color:#524C3E;text-wrap:pretty">{{ f.a }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- slutt-CTA -->
+    <div style="background:#15120A;padding:64px 56px;text-align:center;color:#F2EDE1;border-top:1px solid #15120A">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.12em;color:#D98E4F;margin-bottom:16px">SISTE ORD</div>
+      <div style="font-stretch:125%;font-size:46px;font-weight:800;letter-spacing:-0.5px;text-transform:uppercase;margin-bottom:26px;text-wrap:balance">{{ ctaEnd }}</div>
+      <div style="display:inline-block;background:#BC5F2A;color:#FBF3E6;padding:16px 32px;border-radius:99px;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border:1px solid #F2EDE1" style-hover="background:#A85325">{{ heroCta }}</div>
+      <div style="display:flex;justify-content:space-between;margin-top:56px;padding-top:20px;border-top:1px solid rgba(242,237,225,.2);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.05em;color:#A79E8B">
+        <span>MEDHOLD © 2026</span>
+        <span>VI ER IKKE ET ADVOKATFIRMA — VI HJELPER DEG Å BRUKE DINE EGNE VILKÅR. DOKUMENTER SLETTES ETTER 30 DAGER.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== 1b PROTOTYPE ============================== -->
+<div class="dv-opt" id="1b" data-screen-label="1b Prototype">
+  <div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Interaktiv prototype — klikk deg gjennom de 5 stegene (avvik kan slås av/på og oppdaterer krav + brev)</div>
+  <div class="dv-card" style="width:1280px;background:#F2EDE1;color:#15120A">
+
+    <!-- app topbar -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 32px;background:#FBF8F0;border-bottom:1px solid #15120A">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:24px;height:24px;background:#BC5F2A;border-radius:7px;display:grid;place-items:center;color:#F8F3E8;font-family:'Space Mono',monospace;font-weight:700;font-size:13px">M</div>
+        <span style="font-stretch:125%;font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:.02em">Medhold</span>
+        <span style="margin-left:14px;font-family:'Space Mono',monospace;font-size:10.5px;color:#857D6A;letter-spacing:.05em;border-left:1px solid #D8D0BD;padding-left:14px">SAK NO. 2417 · VANNSKADE BAD · GJENSIDIGE</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#524C3E;letter-spacing:.04em">KARI HOLM</span>
+        <div style="width:30px;height:30px;border-radius:99px;background:#F4E3D2;color:#BC5F2A;border:1px solid #E3C4A4;display:grid;place-items:center;font-family:'Space Mono',monospace;font-weight:700;font-size:11px">KH</div>
+      </div>
+    </div>
+
+    <!-- stepper -->
+    <div style="display:flex;gap:8px;padding:16px 32px;background:#FBF8F0;border-bottom:1px solid #15120A">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+        <div onClick="{{ s.go }}" style="display:flex;align-items:center;gap:8px;padding:8px 15px 8px 9px;border-radius:99px;cursor:pointer;background:{{ s.bg }};border:1px solid {{ s.bc }}">
+          <div style="width:22px;height:22px;border-radius:99px;display:grid;place-items:center;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;background:{{ s.nbg }};color:{{ s.nc }}">{{ s.num }}</div>
+          <span style="font-size:13px;font-weight:700;color:{{ s.c }}">{{ s.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="min-height:780px">
+
+    <!-- STEG 1: LAST OPP -->
+    <sc-if value="{{ isStep0 }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:28px;padding:36px 32px" data-screen-label="Prototype · Steg 1 Last opp">
+        <div>
+          <h2 style="margin:0 0 6px;font-stretch:125%;font-size:27px;font-weight:800;letter-spacing:-0.3px;text-transform:uppercase">Last opp dokumentene</h2>
+          <p style="margin:0 0 24px;color:#524C3E;font-size:15px">Jo mer vi ser, jo sterkere blir saken din.</p>
+
+          <div style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;color:#857D6A;letter-spacing:.1em;margin-bottom:8px">SELSKAP</div>
+          <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap">
+            <sc-for list="{{ selskaper }}" as="x" hint-placeholder-count="5">
+              <div onClick="{{ x.go }}" style="padding:8px 16px;border-radius:99px;font-size:13px;font-weight:700;cursor:pointer;background:{{ x.bg }};color:{{ x.c }};border:1px solid {{ x.bc }}">{{ x.t }}</div>
+            </sc-for>
+          </div>
+          <div style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;color:#857D6A;letter-spacing:.1em;margin-bottom:8px">SKADETYPE</div>
+          <div style="display:flex;gap:8px;margin-bottom:26px;flex-wrap:wrap">
+            <sc-for list="{{ skadetyper }}" as="x" hint-placeholder-count="5">
+              <div onClick="{{ x.go }}" style="padding:8px 16px;border-radius:99px;font-size:13px;font-weight:700;cursor:pointer;background:{{ x.bg }};color:{{ x.c }};border:1px solid {{ x.bc }}">{{ x.t }}</div>
+            </sc-for>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:13px;padding:18px 20px">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div>
+                  <div style="font-weight:700;font-size:15px;margin-bottom:4px">Tilbudet fra selskapet</div>
+                  <div style="display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11.5px;color:#524C3E">
+                    <span style="width:18px;height:18px;border-radius:99px;background:#BC5F2A;color:#fff;display:inline-grid;place-items:center;font-size:10px;font-weight:700">✓</span>
+                    Oppgjørstilbud-Gjensidige-2417.pdf · 2 s.
+                  </div>
+                </div>
+                <span style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.05em;color:#857D6A;cursor:pointer;text-decoration:underline">FJERN</span>
+              </div>
+            </div>
+            <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:13px;padding:18px 20px">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div>
+                  <div style="font-weight:700;font-size:15px;margin-bottom:4px">Skademeldingen din</div>
+                  <div style="display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11.5px;color:#524C3E">
+                    <span style="width:18px;height:18px;border-radius:99px;background:#BC5F2A;color:#fff;display:inline-grid;place-items:center;font-size:10px;font-weight:700">✓</span>
+                    Skademelding-vannskade-bad.pdf
+                  </div>
+                </div>
+                <span style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.05em;color:#857D6A;cursor:pointer;text-decoration:underline">FJERN</span>
+              </div>
+            </div>
+            <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:13px;padding:18px 20px">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div>
+                  <div style="font-weight:700;font-size:15px;margin-bottom:4px">Takstrapport eller håndverkertilbud <span style="font-weight:500;color:#857D6A">(anbefalt)</span></div>
+                  <div style="display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11.5px;color:#524C3E">
+                    <span style="width:18px;height:18px;border-radius:99px;background:#BC5F2A;color:#fff;display:inline-grid;place-items:center;font-size:10px;font-weight:700">✓</span>
+                    Tilbud-BadRehab-AS.pdf · 61 000 kr
+                  </div>
+                </div>
+                <span style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.05em;color:#857D6A;cursor:pointer;text-decoration:underline">FJERN</span>
+              </div>
+            </div>
+            <div style="border:1.5px dashed #B0A78E;border-radius:13px;padding:16px 20px;color:#857D6A;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.04em;text-align:center;cursor:pointer" style-hover="background:#EAE3D2">+ DRA INN FLERE DOKUMENTER, ELLER HENT FRA E-POST</div>
+          </div>
+
+          <div style="display:flex;justify-content:flex-end;margin-top:26px">
+            <div onClick="{{ goSjekk }}" style="background:#15120A;color:#F2EDE1;padding:15px 28px;border-radius:99px;font-family:'Space Mono',monospace;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer" style-hover="background:#000">Start gratis sjekk →</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="background:#F4E3D2;border:1px solid #15120A;border-radius:13px;padding:20px">
+            <div style="font-stretch:125%;font-weight:800;font-size:14px;text-transform:uppercase;color:#7E3D14;margin-bottom:6px">Vilkårene? Vi har dem.</div>
+            <div style="font-size:14px;line-height:1.6;color:#5C3B1D">Gjensidige <b>Bolig Pluss (2025)</b> ligger allerede i systemet — alle 34 sider. Du trenger ikke lete i innboksen.</div>
+          </div>
+          <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:13px;padding:20px">
+            <div style="font-stretch:125%;font-weight:800;font-size:14px;text-transform:uppercase;margin-bottom:6px">Dokumentene dine er trygge</div>
+            <div style="font-size:14px;line-height:1.6;color:#524C3E">Krypteres, deles aldri, og slettes automatisk etter 30 dager. Du kan slette dem selv når som helst.</div>
+          </div>
+          <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:13px;padding:20px">
+            <div style="font-stretch:125%;font-weight:800;font-size:14px;text-transform:uppercase;margin-bottom:6px">Tips fra oppgjørssiden</div>
+            <div style="font-size:14px;line-height:1.6;color:#524C3E">Et håndverkertilbud er det sterkeste kortet ditt. Selskapets takst er et forhandlingsutspill — ikke en fasit.</div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- STEG 2: GRATIS SJEKK -->
+    <sc-if value="{{ isStep1 }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width:720px;margin:0 auto;padding:40px 32px" data-screen-label="Prototype · Steg 2 Gratis sjekk">
+        <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:18px;padding:36px">
+          <div style="display:inline-block;font-family:'Space Mono',monospace;background:#F4E3D2;color:#7E3D14;border:1px solid #E3C4A4;font-size:10.5px;font-weight:700;letter-spacing:.08em;border-radius:99px;padding:5px 12px;margin-bottom:18px">GRATIS SJEKK · FERDIG PÅ 40 SEK</div>
+          <h2 style="margin:0 0 14px;font-stretch:125%;font-size:38px;font-weight:800;letter-spacing:-0.5px;line-height:1.02;text-transform:uppercase">Tilbudet ditt ser <span style="font-family:'Source Serif 4',serif;font-style:italic;text-transform:none;font-weight:600;font-stretch:100%;color:#BC5F2A">lavt</span> ut.</h2>
+          <p style="margin:0 0 26px;font-size:16px;line-height:1.6;color:#524C3E;text-wrap:pretty">Vi fant <b>3 avvik</b> mellom tilbudet og vilkårene dine — trolig <b>36 000–43 000 kr</b> for lavt. Ett av avvikene gjelder en post som ikke er med i det hele tatt.</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:26px">
+            <div style="background:#F2EDE1;border:1px solid #15120A;border-radius:12px;padding:16px 18px">
+              <div style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.08em;color:#857D6A;margin-bottom:6px">SELSKAPETS TILBUD</div>
+              <div style="font-family:'Space Mono',monospace;font-size:26px;font-weight:700;color:#524C3E">60 000 KR</div>
+            </div>
+            <div style="background:#BC5F2A;border:1px solid #15120A;border-radius:12px;padding:16px 18px;color:#FBF3E6">
+              <div style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.08em;color:#F2D4B8;margin-bottom:6px">VILKÅRENE TILSIER</div>
+              <div style="font-family:'Space Mono',monospace;font-size:26px;font-weight:700">96–103 000 KR</div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:28px">
+            <sc-for list="{{ teaser }}" as="t" hint-placeholder-count="3">
+              <div style="display:flex;align-items:center;justify-content:space-between;border:1px solid #C9C0A8;border-radius:11px;padding:13px 16px;background:#F2EDE1">
+                <div style="display:flex;align-items:center;gap:12px">
+                  <span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.06em;color:{{ t.c }};background:{{ t.bg }};border-radius:5px;padding:3px 8px">{{ t.k }}</span>
+                  <span style="font-size:14.5px;font-weight:600;filter:blur(5px);user-select:none">{{ t.blur }}</span>
+                </div>
+                <span style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.06em;color:#857D6A;border:1px solid #C9C0A8;border-radius:99px;padding:3px 10px;background:#FBF8F0">LÅST</span>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display:flex;gap:14px;align-items:center">
+            <div onClick="{{ goAnalyse }}" style="background:#15120A;color:#F2EDE1;padding:15px 26px;border-radius:99px;font-family:'Space Mono',monospace;font-weight:700;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer" style-hover="background:#000">Lås opp full analyse · 349 kr</div>
+            <span style="font-size:13px;color:#857D6A;font-weight:500">Pengene tilbake hvis vi ikke finner noe å klage på.</span>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- STEG 3: FULL ANALYSE -->
+    <sc-if value="{{ isStep2 }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:32px" data-screen-label="Prototype · Steg 3 Full analyse">
+
+        <sc-if value="{{ aiRapport }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px">
+            <div>
+              <h2 style="margin:0 0 5px;font-stretch:125%;font-size:27px;font-weight:800;letter-spacing:-0.3px;text-transform:uppercase">Gjennomgang av oppgjøret ditt</h2>
+              <div style="font-family:'Space Mono',monospace;font-size:11px;color:#857D6A;letter-spacing:.05em">SAK 2417-VS · 5. JULI 2026 · GRUNNLAG: TILBUD, TAKST OG SKADEMELDING</div>
+            </div>
+            <div style="border:1.5px solid #BC5F2A;color:#BC5F2A;border-radius:8px;padding:7px 13px;font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.06em;transform:rotate(-2deg)">KONTROLLERT MOT GJENSIDIGE BOLIG PLUSS (2025)</div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ aiSubtil }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px">
+            <div>
+              <h2 style="margin:0 0 5px;font-stretch:125%;font-size:27px;font-weight:800;letter-spacing:-0.3px;text-transform:uppercase">Full analyse · Vannskade bad</h2>
+              <div style="font-family:'Space Mono',monospace;font-size:11px;color:#857D6A;letter-spacing:.05em">SAMMENLIGNET MED GJENSIDIGE BOLIG PLUSS (2025) OG HÅNDVERKERTILBUDET DITT</div>
+            </div>
+            <span style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.05em;color:#857D6A;border:1px solid #C9C0A8;background:#FBF8F0;border-radius:99px;padding:5px 12px">ANALYSERT AUTOMATISK · KONTROLLER REFERANSENE</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ aiSynlig }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px;gap:20px">
+            <div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px">
+                <h2 style="margin:0;font-stretch:125%;font-size:27px;font-weight:800;letter-spacing:-0.3px;text-transform:uppercase">Full analyse · Vannskade bad</h2>
+                <span style="background:#15120A;color:#D98E4F;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;border-radius:6px;padding:4px 9px">KI-ANALYSE</span>
+              </div>
+              <div style="font-family:'Space Mono',monospace;font-size:11px;color:#857D6A;letter-spacing:.05em">LESTE 34 SIDER VILKÅR PÅ 40 SEKUNDER · 3 AVVIK FUNNET</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;background:#FBF8F0;border:1px solid #15120A;border-radius:99px;padding:9px 9px 9px 18px;min-width:320px">
+              <span style="font-size:14px;color:#857D6A;flex:1">Spør om oppgjøret ditt …</span>
+              <div style="width:30px;height:30px;border-radius:99px;background:#BC5F2A;color:#fff;display:grid;place-items:center;font-size:14px">→</div>
+            </div>
+          </div>
+        </sc-if>
+
+        <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ posts }}" as="p" hint-placeholder-count="5">
+              <div onClick="{{ p.onToggle }}" style="background:#FBF8F0;border:1px solid {{ p.bc }};border-radius:13px;padding:16px 18px;cursor:{{ p.cursor }};opacity:{{ p.op }}">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:14px">
+                  <div style="display:flex;align-items:center;gap:12px;min-width:0">
+                    <sc-if value="{{ p.flagged }}" hint-placeholder-val="{{ false }}">
+                      <div style="width:21px;height:21px;flex:none;border-radius:6px;border:1.5px solid #15120A;background:{{ p.ckbg }};color:#F2EDE1;display:grid;place-items:center;font-size:12px;font-weight:800">{{ p.ck }}</div>
+                    </sc-if>
+                    <sc-if value="{{ p.ok }}" hint-placeholder-val="{{ false }}">
+                      <div style="width:21px;height:21px;flex:none;border-radius:99px;background:#E9EAD8;color:#4E5A2A;border:1px solid #CBD0A8;display:grid;place-items:center;font-size:12px;font-weight:800">✓</div>
+                    </sc-if>
+                    <span style="font-weight:700;font-size:15.5px">{{ p.name }}</span>
+                    <span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.05em;color:{{ p.chipC }};background:{{ p.chipBg }};border-radius:5px;padding:3px 8px;white-space:nowrap">{{ p.chip }}</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;font-family:'Space Mono',monospace">
+                    <span style="font-size:12.5px;color:#857D6A;text-decoration:{{ p.strike }}">{{ p.tilbudTxt }}</span>
+                    <span style="font-size:12px;color:#B0A78E">→</span>
+                    <span style="font-weight:700;font-size:14.5px">{{ p.borTxt }}</span>
+                  </div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:9px;padding-left:33px">
+                  <span style="font-size:13.5px;line-height:1.5;color:#524C3E;text-wrap:pretty">{{ p.reason }}</span>
+                  <sc-if value="{{ p.ref }}" hint-placeholder-val="{{ false }}">
+                    <span style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;color:#BC5F2A;background:#F8F0E4;border:1px solid #E3C4A4;border-radius:6px;padding:3px 9px;white-space:nowrap;flex:none">VILKÅR {{ p.ref }}</span>
+                  </sc-if>
+                </div>
+              </div>
+            </sc-for>
+            <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.04em;color:#857D6A;padding:4px 2px">KLIKK PÅ ET AVVIK FOR Å TA DET UT AV ELLER INN I KLAGEN. BELØP OG BREV OPPDATERES.</div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="background:#15120A;border-radius:15px;padding:24px;color:#F2EDE1;border:1px solid #15120A">
+              <div style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.08em;color:#A79E8B;margin-bottom:4px">SELSKAPETS TILBUD</div>
+              <div style="font-family:'Space Mono',monospace;font-size:20px;font-weight:700;color:#A79E8B;margin-bottom:16px;text-decoration:line-through;text-decoration-color:#BC5F2A;text-decoration-thickness:2px">60 000 KR</div>
+              <div style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.08em;color:#A79E8B;margin-bottom:4px">ETTER FUNNENE DINE</div>
+              <div style="font-stretch:125%;font-size:42px;font-weight:800;line-height:1;margin-bottom:12px">{{ estimatTxt }}</div>
+              <div style="display:inline-block;background:#BC5F2A;color:#FBF3E6;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.04em;border-radius:99px;padding:6px 13px;margin-bottom:18px">{{ kravChip }}</div>
+              <div style="height:12px;background:rgba(242,237,225,.14);border-radius:99px;overflow:hidden;margin-bottom:7px;border:1px solid rgba(242,237,225,.2)">
+                <div style="height:100%;width:{{ estPct }};background:#BC5F2A;border-radius:99px"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.06em;color:#A79E8B"><span>TILBUD</span><span>VILKÅRENES NIVÅ</span></div>
+            </div>
+            <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:15px;padding:20px">
+              <div style="font-stretch:125%;font-weight:800;font-size:13px;text-transform:uppercase;margin-bottom:12px">Referanser i vilkårene</div>
+              <div style="display:flex;flex-direction:column;gap:9px;font-size:13.5px;color:#524C3E">
+                <div style="display:flex;justify-content:space-between"><span>§ 5.1 Hva forsikringen dekker</span><span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#BC5F2A">S. 13</span></div>
+                <div style="display:flex;justify-content:space-between"><span>§ 5.2 Beregning av erstatning</span><span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#BC5F2A">S. 14</span></div>
+                <div style="display:flex;justify-content:space-between"><span>§ 6.3 Aldersfradrag våtrom</span><span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#BC5F2A">S. 17</span></div>
+              </div>
+            </div>
+            <div onClick="{{ goBrev }}" style="background:#15120A;color:#F2EDE1;text-align:center;padding:16px;border-radius:99px;font-family:'Space Mono',monospace;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer" style-hover="background:#000">Generer klagebrev →</div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- STEG 4: KLAGEBREV -->
+    <sc-if value="{{ isStep3 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:1.55fr 1fr;gap:28px;padding:32px" data-screen-label="Prototype · Steg 4 Klagebrev">
+        <div style="background:#FFFDF8;border:1px solid #15120A;border-radius:6px;padding:52px 56px;font-family:'Source Serif 4',serif">
+          <div style="display:flex;justify-content:space-between;font-size:13.5px;color:#524C3E;margin-bottom:36px;font-family:'Archivo',sans-serif">
+            <div>Kari Holm<br>Bekkefaret 12, 0283 Oslo</div>
+            <div style="text-align:right">Gjensidige Forsikring ASA<br>Oppgjørsavdelingen · Sak 2417-VS<br>5. juli 2026</div>
+          </div>
+          <div style="font-weight:700;font-size:17px;margin-bottom:22px">Klage på oppgjørstilbud – vannskade bad – krav om nytt oppgjør</div>
+          <sc-for list="{{ letterParas }}" as="lp" hint-placeholder-count="6">
+            <div style="margin-bottom:16px">
+              <p style="margin:0;font-size:15px;line-height:1.75;text-wrap:pretty">{{ lp.text }}</p>
+              <sc-if value="{{ lp.ref }}" hint-placeholder-val="{{ false }}">
+                <span style="display:inline-block;margin-top:6px;font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;color:#BC5F2A;background:#F8F0E4;border:1px solid #E3C4A4;border-radius:5px;padding:3px 9px">{{ lp.ref }}</span>
+              </sc-if>
+            </div>
+          </sc-for>
+          <div style="font-size:15px;line-height:1.75;margin-top:26px">Med hilsen<br><span style="font-style:italic;font-size:19px">Kari Holm</span></div>
+          <div style="margin-top:26px;padding-top:14px;border-top:1px solid #D8D0BD;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.04em;color:#857D6A">VEDLEGG: HÅNDVERKERTILBUD BADREHAB AS · TAKSTRAPPORT · SKADEMELDING</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:13px;padding:20px">
+            <div style="font-stretch:125%;font-weight:800;font-size:13px;text-transform:uppercase;margin-bottom:10px">Tonefall</div>
+            <div style="display:flex;gap:8px">
+              <sc-for list="{{ toneChips }}" as="t" hint-placeholder-count="2">
+                <div onClick="{{ t.go }}" style="flex:1;text-align:center;padding:10px;border-radius:99px;font-size:13px;font-weight:700;cursor:pointer;background:{{ t.bg }};color:{{ t.c }};border:1px solid {{ t.bc }}">{{ t.t }}</div>
+              </sc-for>
+            </div>
+            <div style="font-size:12.5px;color:#857D6A;margin-top:10px;line-height:1.5">Begge er saklige. «Bestemt» varsler Finansklagenemnda allerede nå.</div>
+          </div>
+          <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:13px;padding:20px">
+            <div style="font-stretch:125%;font-weight:800;font-size:13px;text-transform:uppercase;margin-bottom:10px">Argumenter i brevet</div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ argListe }}" as="a" hint-placeholder-count="3">
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:13.5px">
+                  <span style="display:flex;align-items:center;gap:8px;font-weight:600;color:{{ a.c }}"><span style="font-weight:800">{{ a.mark }}</span>{{ a.t }}</span>
+                  <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:{{ a.c }}">{{ a.sum }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="margin-top:12px;padding-top:12px;border-top:1px dashed #C9C0A8;display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:800">
+              <span style="text-transform:uppercase;font-stretch:125%;font-size:13px">Samlet krav</span><span style="font-family:'Space Mono',monospace;color:#BC5F2A">{{ kravChip }}</span>
+            </div>
+          </div>
+          <div style="background:#F4E3D2;border:1px solid #15120A;border-radius:13px;padding:16px 18px;font-size:13.5px;line-height:1.55;color:#5C3B1D"><b>Hver referanse peker på et faktisk avsnitt</b> i vilkårene dine — selskapet kan slå det opp. Det er det som gjør brevet vanskelig å avvise.</div>
+          <div style="display:flex;gap:10px">
+            <div style="flex:1;text-align:center;border:1px solid #15120A;color:#15120A;padding:12px;border-radius:99px;font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.05em;cursor:pointer" style-hover="background:#EAE3D2">LAST NED PDF</div>
+            <div style="flex:1;text-align:center;border:1px solid #15120A;color:#15120A;padding:12px;border-radius:99px;font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.05em;cursor:pointer" style-hover="background:#EAE3D2">KOPIER TEKST</div>
+          </div>
+          <div onClick="{{ goSendt }}" style="background:#15120A;color:#F2EDE1;text-align:center;padding:16px;border-radius:99px;font-family:'Space Mono',monospace;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer" style-hover="background:#000">Merk som sendt →</div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- STEG 5: VEIEN VIDERE -->
+    <sc-if value="{{ isStep4 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:28px;padding:36px 32px;max-width:1100px" data-screen-label="Prototype · Steg 5 Veien videre">
+        <div>
+          <h2 style="margin:0 0 6px;font-stretch:125%;font-size:27px;font-weight:800;letter-spacing:-0.3px;text-transform:uppercase">Klagen er sendt. Nå venter vi — sammen.</h2>
+          <p style="margin:0 0 30px;color:#524C3E;font-size:15px">Du trenger ikke følge med selv. Vi passer på fristene.</p>
+          <div style="display:flex;flex-direction:column">
+            <sc-for list="{{ tidslinje }}" as="t" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:34px 1fr;gap:14px">
+                <div style="display:flex;flex-direction:column;align-items:center">
+                  <div style="width:26px;height:26px;border-radius:99px;flex:none;display:grid;place-items:center;font-size:12px;font-weight:800;background:{{ t.dbg }};color:{{ t.dc }};border:1.5px solid {{ t.dbc }}">{{ t.mark }}</div>
+                  <sc-if value="{{ t.line }}" hint-placeholder-val="{{ true }}"><div style="width:2px;flex:1;background:#C9C0A8;margin:4px 0"></div></sc-if>
+                </div>
+                <div style="padding-bottom:26px">
+                  <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+                    <span style="font-weight:800;font-size:16px">{{ t.t }}</span>
+                    <span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.06em;color:{{ t.tagC }};background:{{ t.tagBg }};border-radius:5px;padding:3px 8px">{{ t.tag }}</span>
+                  </div>
+                  <div style="font-size:14px;line-height:1.6;color:#524C3E;max-width:520px;text-wrap:pretty">{{ t.d }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:13px;padding:20px">
+            <div style="font-stretch:125%;font-weight:800;font-size:13px;text-transform:uppercase;margin-bottom:8px">Visste du?</div>
+            <div style="font-size:14px;line-height:1.6;color:#524C3E">Selskapet plikter å begrunne et avslag skriftlig. Svaret deres blir neste dokument du laster opp — vi leser det for deg og foreslår neste trekk.</div>
+          </div>
+          <div style="background:#15120A;border-radius:13px;padding:20px;color:#F2EDE1">
+            <div style="font-stretch:125%;font-weight:800;font-size:13px;text-transform:uppercase;margin-bottom:8px;color:#D98E4F">Hvis det ender i Finansklagenemnda</div>
+            <div style="font-size:14px;line-height:1.6;color:#CBC2AC">Behandlingen er gratis. Vi gjenbruker hele saken din — dokumenter, avvik og referanser — rett inn i nemndas skjema. Du starter aldri på nytt.</div>
+          </div>
+          <div onClick="{{ goAnalyseTilbake }}" style="text-align:center;border:1px solid #15120A;color:#15120A;padding:13px;border-radius:99px;font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.05em;cursor:pointer" style-hover="background:#EAE3D2">← TILBAKE TIL ANALYSEN</div>
+        </div>
+      </div>
+    </sc-if>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============================== 1c MOBIL ============================== -->
+<div class="dv-opt" id="1c" data-screen-label="1c Mobil">
+  <div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Mobil — gratis sjekk, analyse og klagebrev på iPhone</div>
+  <div style="display:flex;gap:36px;align-items:flex-start">
+
+    <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="390px,844px">
+      <div style="background:#F2EDE1;min-height:100%;padding:66px 18px 28px;font-family:'Archivo',sans-serif;color:#15120A;box-sizing:border-box">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px">
+          <div style="width:22px;height:22px;background:#BC5F2A;border-radius:6px;display:grid;place-items:center;color:#F8F3E8;font-family:'Space Mono',monospace;font-weight:700;font-size:12px">M</div>
+          <span style="font-stretch:125%;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.02em">Medhold</span>
+        </div>
+        <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:16px;padding:22px 20px">
+          <div style="display:inline-block;font-family:'Space Mono',monospace;background:#F4E3D2;color:#7E3D14;border:1px solid #E3C4A4;font-size:9.5px;font-weight:700;letter-spacing:.07em;border-radius:99px;padding:4px 10px;margin-bottom:12px">GRATIS SJEKK · FERDIG</div>
+          <div style="font-stretch:125%;font-size:26px;font-weight:800;line-height:1.05;text-transform:uppercase;margin-bottom:10px">Tilbudet ditt ser <span style="font-family:'Source Serif 4',serif;font-style:italic;text-transform:none;font-weight:600;font-stretch:100%;color:#BC5F2A">lavt</span> ut.</div>
+          <div style="font-size:14px;line-height:1.55;color:#524C3E;margin-bottom:18px">3 avvik mot vilkårene — trolig <b>36 000–43 000 kr</b> for lavt.</div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px">
+            <div style="display:flex;justify-content:space-between;align-items:center;background:#F2EDE1;border:1px solid #15120A;border-radius:10px;padding:12px 14px">
+              <span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.06em;color:#857D6A">TILBUD</span>
+              <span style="font-family:'Space Mono',monospace;font-weight:700;font-size:15px;color:#524C3E">60 000 KR</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;background:#BC5F2A;border:1px solid #15120A;border-radius:10px;padding:12px 14px;color:#FBF3E6">
+              <span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.06em;color:#F2D4B8">VILKÅRENE TILSIER</span>
+              <span style="font-family:'Space Mono',monospace;font-weight:700;font-size:15px">96–103 000 KR</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;border:1px solid #C9C0A8;border-radius:9px;padding:10px 12px;background:#F2EDE1">
+              <span style="font-size:12.5px;font-weight:600;filter:blur(4px)">Riving og avfallshåndtering</span>
+              <span style="font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;color:#857D6A;background:#FBF8F0;border:1px solid #C9C0A8;border-radius:99px;padding:2px 8px">LÅST</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;border:1px solid #C9C0A8;border-radius:9px;padding:10px 12px;background:#F2EDE1">
+              <span style="font-size:12.5px;font-weight:600;filter:blur(4px)">Membran og flislegging</span>
+              <span style="font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;color:#857D6A;background:#FBF8F0;border:1px solid #C9C0A8;border-radius:99px;padding:2px 8px">LÅST</span>
+            </div>
+          </div>
+          <div style="background:#15120A;color:#F2EDE1;text-align:center;padding:14px;border-radius:99px;font-family:'Space Mono',monospace;font-weight:700;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase">Lås opp full analyse · 349 kr</div>
+          <div style="text-align:center;font-size:11.5px;color:#857D6A;margin-top:10px">Pengene tilbake hvis vi ikke finner noe.</div>
+        </div>
+      </div>
+    </x-import>
+
+    <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="390px,844px">
+      <div style="background:#F2EDE1;min-height:100%;padding:66px 18px 28px;font-family:'Archivo',sans-serif;color:#15120A;box-sizing:border-box">
+        <div style="font-stretch:125%;font-weight:800;font-size:19px;text-transform:uppercase;letter-spacing:-0.2px;margin-bottom:3px">Full analyse</div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.05em;color:#857D6A;margin-bottom:14px">VANNSKADE BAD · GJENSIDIGE BOLIG PLUSS</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:12px;padding:14px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <span style="font-weight:700;font-size:14px">Membran og flislegging</span>
+              <span style="font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.05em;color:#96650F;background:#F3E7C8;border:1px solid #E0CB94;border-radius:5px;padding:3px 7px">UNDERPRISET</span>
+            </div>
+            <div style="font-family:'Space Mono',monospace;font-size:12px;color:#524C3E;margin-bottom:8px"><span style="text-decoration:line-through">46 000</span> → <b style="font-size:13.5px">61 000 KR</b></div>
+            <span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#BC5F2A;background:#F8F0E4;border:1px solid #E3C4A4;border-radius:5px;padding:2px 8px">VILKÅR § 5.2 · S. 14</span>
+          </div>
+          <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:12px;padding:14px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <span style="font-weight:700;font-size:14px">Riving og avfall</span>
+              <span style="font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.05em;color:#A83415;background:#F6DFD3;border:1px solid #E5BBA4;border-radius:5px;padding:3px 7px">UTELATT</span>
+            </div>
+            <div style="font-family:'Space Mono',monospace;font-size:12px;color:#524C3E;margin-bottom:8px">Ikke i tilbudet → <b style="font-size:13.5px">18 500 KR</b></div>
+            <span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#BC5F2A;background:#F8F0E4;border:1px solid #E3C4A4;border-radius:5px;padding:2px 8px">VILKÅR § 5.1 · S. 13</span>
+          </div>
+          <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:12px;padding:14px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <span style="font-weight:700;font-size:14px">Aldersfradrag våtrom</span>
+              <span style="font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.05em;color:#A83415;background:#F6DFD3;border:1px solid #E5BBA4;border-radius:5px;padding:3px 7px">FEIL SATS</span>
+            </div>
+            <div style="font-family:'Space Mono',monospace;font-size:12px;color:#524C3E;margin-bottom:8px">30 % → <b style="font-size:13.5px">MAKS 20 %</b> (bad fra 2019)</div>
+            <span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#BC5F2A;background:#F8F0E4;border:1px solid #E3C4A4;border-radius:5px;padding:2px 8px">VILKÅR § 6.3 · S. 17</span>
+          </div>
+          <div style="background:#FBF8F0;border:1px solid #C9C0A8;border-radius:12px;padding:14px;display:flex;justify-content:space-between;align-items:center">
+            <span style="font-weight:700;font-size:13.5px;color:#524C3E">Riktig priset (2)</span>
+            <span style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;color:#4E5A2A">RØRLEGGER · MALING ✓</span>
+          </div>
+        </div>
+        <div style="position:sticky;bottom:0;margin-top:14px;background:#15120A;border-radius:16px;padding:16px;color:#F2EDE1">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+            <span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;color:#A79E8B">DU KREVER</span>
+            <span style="font-family:'Space Mono',monospace;font-size:20px;font-weight:700;color:#D98E4F">+ 39 300 KR</span>
+          </div>
+          <div style="background:#BC5F2A;text-align:center;padding:12px;border-radius:99px;font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.05em;text-transform:uppercase">Generer klagebrev →</div>
+        </div>
+      </div>
+    </x-import>
+
+    <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="390px,844px">
+      <div style="background:#F2EDE1;min-height:100%;padding:66px 18px 28px;font-family:'Archivo',sans-serif;color:#15120A;box-sizing:border-box">
+        <div style="font-stretch:125%;font-weight:800;font-size:19px;text-transform:uppercase;letter-spacing:-0.2px;margin-bottom:3px">Klagebrevet ditt</div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.05em;color:#857D6A;margin-bottom:14px">3 ARGUMENTER · SAMLET KRAV + 39 300 KR</div>
+        <div style="background:#FFFDF8;border:1px solid #15120A;border-radius:6px;padding:22px 20px;font-family:'Source Serif 4',serif">
+          <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.05em;color:#857D6A;margin-bottom:14px">TIL GJENSIDIGE FORSIKRING ASA · SAK 2417-VS</div>
+          <div style="font-weight:700;font-size:13.5px;margin-bottom:12px">Klage på oppgjørstilbud – vannskade bad</div>
+          <p style="margin:0 0 10px;font-size:12px;line-height:1.7">Jeg viser til deres oppgjørstilbud av 18. juni 2026 på 60 000 kr. Tilbudet er vesentlig lavere enn det forsikringsvilkårene gir meg rett til …</p>
+          <p style="margin:0 0 10px;font-size:12px;line-height:1.7">Riving og avfallshåndtering er en nødvendig del av reparasjonen, men er ikke medtatt i tilbudet …</p>
+          <span style="display:inline-block;font-family:'Space Mono',monospace;font-size:9px;font-weight:700;color:#BC5F2A;background:#F8F0E4;border:1px solid #E3C4A4;border-radius:4px;padding:2px 7px;margin-bottom:10px">VILKÅR § 5.1 · S. 13</span>
+          <p style="margin:0;font-size:12px;line-height:1.7">Tilbudet legger til grunn 30 % aldersfradrag. Badet ble rehabilitert i 2019, og vilkårene …</p>
+          <div style="margin-top:12px;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.06em;color:#B0A78E">— FORTSETTER —</div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:14px">
+          <div style="flex:1;text-align:center;border:1px solid #15120A;color:#15120A;padding:12px;border-radius:99px;font-family:'Space Mono',monospace;font-weight:700;font-size:10.5px;letter-spacing:.05em">REDIGER</div>
+          <div style="flex:2;background:#15120A;color:#F2EDE1;text-align:center;padding:12px;border-radius:99px;font-family:'Space Mono',monospace;font-weight:700;font-size:10.5px;letter-spacing:.05em">SEND TIL GJENSIDIGE</div>
+        </div>
+      </div>
+    </x-import>
+
+  </div>
+</div>
+
+<!-- ============================== 1d/1e/1f KI-SYNLIGHET ============================== -->
+<div class="dv-opt" id="1d" data-screen-label="1d KI usynlig – ekspertrapport">
+  <div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>KI usynlig — føles som en ekspertrapport med stempel</div>
+  <div class="dv-card" style="width:460px;background:#F2EDE1;padding:28px;color:#15120A;border:1px solid #15120A">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;color:#857D6A;margin-bottom:8px">GJENNOMGANG AV OPPGJØR</div>
+        <div style="font-stretch:125%;font-size:22px;font-weight:800;line-height:1.1;text-transform:uppercase">Tilbudet dekker ikke det vilkårene <span style="font-family:'Source Serif 4',serif;font-style:italic;text-transform:none;font-weight:600;font-stretch:100%;color:#BC5F2A">lover.</span></div>
+      </div>
+      <div style="border:1.5px solid #BC5F2A;color:#BC5F2A;border-radius:8px;padding:6px 10px;font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.06em;transform:rotate(5deg);flex:none;margin-left:12px;text-align:center">KONTROLLERT MOT<br>BOLIG PLUSS 2025</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;font-size:12px">
+      <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:9px;padding:10px"><div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;color:#857D6A;margin-bottom:3px">SAK</div><div style="font-family:'Space Mono',monospace;font-weight:700">2417-VS</div></div>
+      <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:9px;padding:10px"><div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;color:#857D6A;margin-bottom:3px">GRUNNLAG</div><div style="font-family:'Space Mono',monospace;font-weight:700">3 DOK.</div></div>
+      <div style="background:#FBF8F0;border:1px solid #15120A;border-radius:9px;padding:10px"><div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;color:#857D6A;margin-bottom:3px">FUNN</div><div style="font-family:'Space Mono',monospace;font-weight:700;color:#A83415">3 AVVIK</div></div>
+    </div>
+    <div style="font-size:13.5px;line-height:1.65;color:#524C3E;border-top:1px solid #15120A;padding-top:14px;text-wrap:pretty">Konklusjonen skrives som en fagvurdering, uten teknologi i forgrunnen. Ingen «KI»-merking, ingen chat. Trygghet gjennom rapport-språk, stempel og referanser.</div>
+  </div>
+</div>
+
+<div class="dv-opt" id="1e" data-screen-label="1e KI synlig – arbeidende analyse">
+  <div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a>KI synlig — du ser den lese vilkårene (looper), og kan stille spørsmål</div>
+  <div class="dv-card" style="width:460px;background:#15120A;padding:28px;color:#F2EDE1;border:1px solid #15120A">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+      <span style="background:rgba(242,237,225,.1);color:#D98E4F;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;border-radius:6px;padding:4px 9px">KI-ANALYSE</span>
+      <span style="font-family:'Space Mono',monospace;font-size:10px;color:#A79E8B;letter-spacing:.04em">GJENSIDIGE BOLIG PLUSS (2025) · 34 SIDER</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;font-family:'Space Mono',monospace;font-size:12.5px;min-height:150px">
+      <sc-for list="{{ aiLines }}" as="l" hint-placeholder-count="5">
+        <div style="display:flex;align-items:center;gap:10px;opacity:{{ l.op }}">
+          <span style="width:16px;text-align:center;font-weight:700;color:{{ l.mc }}">{{ l.mark }}</span>
+          <span style="font-weight:{{ l.w }};color:{{ l.c }}">{{ l.t }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ aiDone }}" hint-placeholder-val="{{ false }}">
+      <div style="background:rgba(242,237,225,.06);border:1px solid rgba(242,237,225,.25);border-radius:11px;padding:14px 16px;margin-top:6px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.06em">[ 3 AVVIK FUNNET ]</span>
+          <span style="font-family:'Space Mono',monospace;font-weight:700;font-size:18px;color:#D98E4F">+ 39 300 KR</span>
+        </div>
+      </div>
+    </sc-if>
+    <div style="display:flex;align-items:center;gap:8px;background:rgba(242,237,225,.05);border:1px solid rgba(242,237,225,.25);border-radius:99px;padding:8px 8px 8px 16px;margin-top:16px">
+      <span style="font-size:13.5px;color:#A79E8B;flex:1">Spør: «Hvorfor er fradraget feil?»</span>
+      <div style="width:28px;height:28px;border-radius:99px;background:#BC5F2A;color:#fff;display:grid;place-items:center;font-size:13px">→</div>
+    </div>
+  </div>
+</div>
+
+<div class="dv-opt" id="1f" data-screen-label="1f KI subtil – fotnote">
+  <div class="dv-olabel"><a class="dv-oid" href="#1f">1f</a>KI subtil — vanlig resultat, ærlig fotnote (anbefalingen — også standard i <a class="dv-oid" href="#1b">1b</a>)</div>
+  <div class="dv-card" style="width:460px;background:#F2EDE1;padding:28px;color:#15120A;border:1px solid #15120A">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+      <div style="font-stretch:125%;font-weight:800;font-size:18px;text-transform:uppercase;letter-spacing:-0.2px">Full analyse · Vannskade bad</div>
+      <span style="font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.05em;color:#857D6A;border:1px solid #C9C0A8;background:#FBF8F0;border-radius:99px;padding:3px 9px;white-space:nowrap">AUTOMATISK</span>
+    </div>
+    <div style="font-size:13px;color:#524C3E;margin-bottom:16px">Sammenlignet med vilkårene og håndverkertilbudet ditt</div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;background:#FBF8F0;border:1px solid #15120A;border-radius:11px;padding:12px 14px">
+        <span style="font-size:13.5px;font-weight:700">Riving og avfall — utelatt</span>
+        <span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#BC5F2A;background:#F8F0E4;border:1px solid #E3C4A4;border-radius:5px;padding:2px 8px">§ 5.1 · S. 13</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;background:#FBF8F0;border:1px solid #15120A;border-radius:11px;padding:12px 14px">
+        <span style="font-size:13.5px;font-weight:700">Membran og flis — underpriset</span>
+        <span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#BC5F2A;background:#F8F0E4;border:1px solid #E3C4A4;border-radius:5px;padding:2px 8px">§ 5.2 · S. 14</span>
+      </div>
+    </div>
+    <div style="border-top:1px solid #15120A;padding-top:12px;font-size:12.5px;line-height:1.6;color:#857D6A">Analysert automatisk mot vilkårene dine. Referansene er klikkbare — kontrollér dem alltid selv. Feil kan forekomme.</div>
+  </div>
+</div>
+
+</div>
+<p class="dv-next">Prøv videre: «gjør <a class="dv-oid" href="#1e">1e</a> til standard i prototypen» · «vis landingssiden på mobil» · «mer kork-oransje, mindre sort» · «tilbake til den grønne (Medhold.dc.html)»</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;tonefall&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;kampklar&quot;,&quot;nøktern&quot;],&quot;default&quot;:&quot;kampklar&quot;,&quot;section&quot;:&quot;Innhold&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;aiStil&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;subtil&quot;,&quot;rapport&quot;,&quot;synlig&quot;],&quot;default&quot;:&quot;subtil&quot;,&quot;section&quot;:&quot;Prototype · analyse-header&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { step: 0, inc: { m: true, r: true, f: true }, tone: 'bestemt', skadetype: 'Vannskade', selskap: 'Gjensidige', ai: 0 };
+
+  componentDidMount() {
+    this._t = setInterval(() => this.setState(s => ({ ai: (s.ai + 1) % 9 })), 850);
+  }
+  componentWillUnmount() { clearInterval(this._t); }
+
+  fmt(n) {
+    const sign = n < 0 ? '−' : '';
+    return sign + Math.abs(n).toLocaleString('nb-NO').replace(/\u00a0/g, ' ') + ' kr';
+  }
+
+  renderVals() {
+    const S = this.state;
+    const kamp = (this.props.tonefall ?? 'kampklar') !== 'nøktern';
+    const aiStil = this.props.aiStil ?? 'subtil';
+    const INK = '#15120A', CORK = '#BC5F2A', CORKTINT = '#F4E3D2', LINE = '#C9C0A8', CARD = '#FBF8F0', MUTED = '#6E6759', CREAM = '#F2EDE1';
+
+    // ---------- copy (tonefall tweak) ----------
+    const copy = kamp ? {
+      heroKicker: 'Fikk du oppgjørstilbud fra forsikringsselskapet?',
+      heroH1: 'Ikke ta det første tilbudet.',
+      heroSub: 'Forsikringsselskapet har et helt oppgjørsteam. Nå har du også det. Last opp tilbudet — Medhold viser hva vilkårene faktisk gir deg rett til, og skriver klagen for deg.',
+      heroCta: 'Sjekk oppgjøret gratis',
+      band: 'Bygget på de faktiske vilkårene til Gjensidige, If, Tryg og Fremtind — ikke på synsing.',
+      ctaEnd: 'Du har krav på mer enn du tror.'
+    } : {
+      heroKicker: 'Forsikringsoppgjør',
+      heroH1: 'Er oppgjørstilbudet ditt riktig?',
+      heroSub: 'Last opp tilbudet fra selskapet. Medhold sammenligner det med forsikringsvilkårene dine, viser avvikene og hjelper deg å skrive en godt begrunnet klage.',
+      heroCta: 'Start gratis sjekk',
+      band: 'Basert på de faktiske vilkårene til Gjensidige, If, Tryg og Fremtind.',
+      ctaEnd: 'Sjekk hva vilkårene gir deg rett til.'
+    };
+
+    // ---------- stepper ----------
+    const stepNames = ['Last opp', 'Gratis sjekk', 'Full analyse', 'Klagebrev', 'Veien videre'];
+    const steps = stepNames.map((label, i) => {
+      const active = i === S.step, done = i < S.step;
+      return {
+        label, go: () => this.setState({ step: i }),
+        num: done ? '✓' : String(i + 1),
+        bg: active ? INK : done ? CORKTINT : CARD,
+        bc: active ? INK : done ? '#E3C4A4' : LINE,
+        c: active ? CREAM : done ? '#7E3D14' : MUTED,
+        nbg: active ? 'rgba(242,237,225,.2)' : done ? CORK : '#EAE3D2',
+        nc: active ? CREAM : done ? '#fff' : '#857D6A'
+      };
+    });
+
+    // ---------- chips (upload) ----------
+    const chip = (t, sel, key) => ({
+      t, go: () => this.setState({ [key]: t }),
+      bg: sel ? INK : CARD, c: sel ? CREAM : '#524C3E', bc: sel ? INK : LINE
+    });
+    const selskaper = ['Gjensidige', 'If', 'Tryg', 'Fremtind', 'Annet'].map(t => chip(t, S.selskap === t, 'selskap'));
+    const skadetyper = ['Vannskade', 'Innbrudd', 'Bilskade', 'Reise', 'Bygning'].map(t => chip(t, S.skadetype === t, 'skadetype'));
+
+    // ---------- analysis posts ----------
+    const base = [
+      { name: 'Rørlegger og sanitærutstyr', ok: true, tilbud: 22000, bor: 22000, reason: 'I tråd med takstrapporten.' },
+      { name: 'Maling og overflater', ok: true, tilbud: 10000, bor: 10000, reason: 'I tråd med takstrapporten.' },
+      { key: 'm', name: 'Membran og flislegging', chip: 'UNDERPRISET', warn: true, tilbud: 46000, bor: 61000, delta: 15000, ref: '§ 5.2 · s. 14', reason: 'Vilkårene dekker «nødvendige kostnader til reparasjon». Håndverkertilbudet ditt dokumenterer 61 000 kr.' },
+      { key: 'r', name: 'Riving og avfallshåndtering', chip: 'UTELATT', tilbud: 0, bor: 18500, delta: 18500, ref: '§ 5.1 · s. 13', reason: 'Nødvendig del av reparasjonen — mangler helt i tilbudet.' },
+      { key: 'f', name: 'Aldersfradrag våtrom', chip: 'FEIL SATS', tilbud: -18000, bor: -12200, delta: 5800, ref: '§ 6.3 · s. 17', reason: 'Selskapet trekker 30 %. Badet er fra 2019 — vilkårene tillater maks 20 % for våtrom under 10 år.' }
+    ];
+    const posts = base.map(p => {
+      const flagged = !p.ok, inSel = flagged ? S.inc[p.key] : true;
+      return {
+        name: p.name, reason: p.reason, ok: !!p.ok, flagged,
+        chip: p.ok ? 'RIKTIG' : p.chip,
+        chipBg: p.ok ? '#E9EAD8' : p.warn ? '#F3E7C8' : '#F6DFD3',
+        chipC: p.ok ? '#4E5A2A' : p.warn ? '#96650F' : '#A83415',
+        bc: !flagged ? LINE : inSel ? INK : LINE,
+        tilbudTxt: p.tilbud === 0 ? 'ikke i tilbudet' : this.fmt(p.tilbud),
+        borTxt: this.fmt(p.bor),
+        strike: flagged && p.tilbud !== 0 ? 'line-through' : 'none',
+        ref: p.ref || '',
+        cursor: flagged ? 'pointer' : 'default',
+        op: inSel ? '1' : '0.45',
+        ck: inSel ? '✓' : '',
+        ckbg: inSel ? INK : CARD,
+        onToggle: flagged ? () => this.setState(s => ({ inc: { ...s.inc, [p.key]: !s.inc[p.key] } })) : null
+      };
+    });
+
+    const deltas = { m: 15000, r: 18500, f: 5800 };
+    const krav = Object.keys(deltas).reduce((sum, k) => sum + (S.inc[k] ? deltas[k] : 0), 0);
+    const estimat = 60000 + krav;
+    const nInc = Object.values(S.inc).filter(Boolean).length;
+
+    // ---------- letter ----------
+    const bestemt = S.tone === 'bestemt';
+    const args = [];
+    if (S.inc.m) args.push({ text: 'Tilbudet priser membran- og flisarbeid til 46 000 kr. Vedlagt håndverkertilbud fra BadRehab AS dokumenterer en reell kostnad på 61 000 kr. Vilkårene punkt 5.2 dekker «nødvendige kostnader til reparasjon», og jeg ber om at dokumentert pris legges til grunn.', ref: 'Vilkår § 5.2 · s. 14' });
+    if (S.inc.r) args.push({ text: 'Riving og avfallshåndtering er en nødvendig del av reparasjonen, men er ikke medtatt i tilbudet. Kostnaden er dokumentert til 18 500 kr i vedlagt tilbud, og jeg ber om at posten inkluderes, jf. vilkårene punkt 5.1.', ref: 'Vilkår § 5.1 · s. 13' });
+    if (S.inc.f) args.push({ text: 'Tilbudet legger til grunn 30 % aldersfradrag. Badet ble rehabilitert i 2019, og vilkårene punkt 6.3 setter maksimalt fradrag til 20 % for våtrom yngre enn 10 år. Jeg ber om at fradraget korrigeres.', ref: 'Vilkår § 6.3 · s. 17' });
+
+    const intro = bestemt
+      ? 'Jeg viser til deres oppgjørstilbud av 18. juni 2026 (sak 2417-VS) på 60 000 kr etter vannskade på bad. Tilbudet er vesentlig lavere enn det forsikringsvilkårene gir meg rett til, og jeg krever at oppgjøret vurderes på nytt. Avvikene er som følger:'
+      : 'Jeg viser til deres oppgjørstilbud av 18. juni 2026 (sak 2417-VS) på 60 000 kr etter vannskade på bad. Etter en gjennomgang av forsikringsvilkårene mener jeg tilbudet ikke fullt ut dekker det jeg har krav på, og jeg ber derfor om en ny vurdering av følgende punkter:';
+    const kravPara = krav > 0
+      ? 'Samlet ber jeg om et korrigert oppgjør på ' + this.fmt(estimat) + ' — ' + this.fmt(krav) + ' mer enn tilbudet. Beregningen er dokumentert i vedleggene.'
+      : 'Velg minst ett avvik i analysen for å bygge kravet.';
+    const closing = bestemt
+      ? 'Jeg ber om skriftlig svar innen tre uker. Dersom kravet ikke imøtekommes, vil saken bli brakt inn for Finansklagenemnda.'
+      : 'Jeg ser frem til deres svar, og håper vi finner en god løsning. Skulle vi ikke gjøre det, vil jeg vurdere å legge saken frem for Finansklagenemnda.';
+    const letterParas = [{ text: intro, ref: '' }, ...args, { text: kravPara, ref: '' }, { text: closing, ref: '' }];
+
+    const toneChips = [
+      { t: 'Høflig', key: 'hoflig' }, { t: 'Bestemt', key: 'bestemt' }
+    ].map(o => ({
+      t: o.t, go: () => this.setState({ tone: o.key }),
+      bg: S.tone === o.key ? INK : CARD, c: S.tone === o.key ? CREAM : '#524C3E', bc: S.tone === o.key ? INK : LINE
+    }));
+
+    const argListe = [
+      { k: 'm', t: 'Membran og flis', sum: '+ 15 000 kr' },
+      { k: 'r', t: 'Riving og avfall', sum: '+ 18 500 kr' },
+      { k: 'f', t: 'Aldersfradrag', sum: '+ 5 800 kr' }
+    ].map(a => ({
+      t: a.t, sum: S.inc[a.k] ? a.sum : 'utelatt',
+      mark: S.inc[a.k] ? '✓' : '—', c: S.inc[a.k] ? INK : '#ABA28D'
+    }));
+
+    // ---------- teaser rows ----------
+    const teaser = [
+      { k: 'UTELATT POST', c: '#A83415', bg: '#F6DFD3', blur: 'Riving og avfallshåndtering mangler' },
+      { k: 'UNDERPRISET', c: '#96650F', bg: '#F3E7C8', blur: 'Membran og flislegging for lavt' },
+      { k: 'FEIL FRADRAG', c: '#A83415', bg: '#F6DFD3', blur: 'Aldersfradrag over vilkårenes maks' }
+    ];
+
+    // ---------- landing data ----------
+    const hvordan = [
+      { n: '01', t: 'Last opp', d: 'Tilbudet fra selskapet og skademeldingen. Har du takst eller håndverkertilbud, blir saken enda sterkere.' },
+      { n: '02', t: 'Vi leser vilkårene', d: 'Hele vilkårsdokumentet, ordrett. Hver post i tilbudet sjekkes mot det du faktisk har krav på.' },
+      { n: '03', t: 'Send klagen', d: 'Et ferdig brev med riktige referanser til vilkårspunkt og side. Høflig, bestemt og vanskelig å avvise.' }
+    ];
+    const eksempler = [
+      { tag: 'Vannskade bad', sted: 'Oslo', fra: '84 000', til: '152 000 KR', diff: '+ 68 000 KR ETTER KLAGE', flagget: 'utelatt riving, underpriset membranarbeid, feil aldersfradrag.' },
+      { tag: 'Innbrudd', sted: 'Bergen', fra: '34 000', til: '51 500 KR', diff: '+ 17 500 KR ETTER KLAGE', flagget: 'dagsverdi brukt der vilkårene gir gjenanskaffelse (§ 4.1), to gjenstander utelatt.' },
+      { tag: 'Bilskade', sted: 'Trondheim', fra: '145 000', til: '189 000 KR', diff: '+ 44 000 KR ETTER KLAGE', flagget: 'markedsverdi satt under sammenlignbare annonser, ettermontert utstyr utelatt.' }
+    ];
+    const serEtter = [
+      { t: 'Aldersfradrag over vilkårenes maksimum', ref: '§ 6' },
+      { t: 'Utelatte poster: riving, avfall, følgeskader', ref: '§ 5.1' },
+      { t: 'Dagsverdi brukt der du har krav på gjenanskaffelse', ref: '§ 4.1' },
+      { t: 'Håndverksarbeid priset under dokumentert kostnad', ref: '§ 5.2' },
+      { t: 'Egenandel trukket mer enn én gang', ref: '§ 7' },
+      { t: 'Manglende dekning for alternativ bolig', ref: '§ 8.3' }
+    ];
+    const faq = [
+      { q: 'Er det lov å klage på oppgjøret?', a: 'Ja. Tilbudet er et utspill, ikke et vedtak. Du har full rett til å kreve ny vurdering — og selskapet plikter å svare skriftlig.' },
+      { q: 'Hva om analysen ikke finner noe?', a: 'Da sier vi det, tydelig. Gratis-sjekken koster ingenting, og full analyse refunderes hvis vi ikke finner noe å klage på.' },
+      { q: 'Hvilke selskaper støtter dere?', a: 'Vi har vilkårene til Gjensidige, If, Tryg og Fremtind — og du kan laste opp vilkår fra andre selskaper selv.' },
+      { q: 'Er dere advokater?', a: 'Nei, og du trenger som regel ikke det heller. Vi hjelper deg å bruke dine egne vilkår. Trenger saken advokat, sier vi ifra.' }
+    ];
+
+    // ---------- timeline ----------
+    const tidslinje = [
+      { t: 'Klage sendt til Gjensidige', tag: 'I DAG', d: 'Brevet ditt dokumenterer ' + nInc + ' avvik med referanser til vilkårspunkt og side.', state: 'done', line: true },
+      { t: 'Selskapet svarer', tag: 'VENTER · FRIST 26. JULI', d: 'Normalt innen 2–4 uker. Hører du ikke noe, purrer vi for deg — automatisk.', state: 'active', line: true },
+      { t: 'Hvis tilbudet ikke endres: Finansklagenemnda', tag: 'GRATIS', d: 'Uavhengig klageordning. Vi fyller ut skjemaet med saken din — dokumenter, avvik og referanser følger med.', state: 'wait', line: true },
+      { t: 'Utbetaling', tag: 'MÅLET', d: 'Får du medhold, betaler selskapet differansen — ofte med forsinkelsesrente.', state: 'wait', line: false }
+    ];
+    const tl = tidslinje.map(t => ({
+      ...t,
+      mark: t.state === 'done' ? '✓' : t.state === 'active' ? '●' : '',
+      dbg: t.state === 'done' ? INK : t.state === 'active' ? CARD : '#EAE3D2',
+      dc: t.state === 'done' ? CREAM : t.state === 'active' ? CORK : '#ABA28D',
+      dbc: t.state === 'done' ? INK : t.state === 'active' ? CORK : LINE,
+      tagBg: t.state === 'done' ? CORKTINT : t.state === 'active' ? '#F6DFD3' : '#EAE3D2',
+      tagC: t.state === 'done' ? '#7E3D14' : t.state === 'active' ? '#A83415' : '#857D6A'
+    }));
+
+    // ---------- AI card (1e) ----------
+    const lines = [
+      'Leser oppgjørstilbudet … 4 poster',
+      'Leser skademelding og takst',
+      'Sammenligner mot vilkår § 4–§ 8',
+      'Kontrollerer fradrag mot § 6.3',
+      'Skriver funn, beregner differanse'
+    ];
+    const phase = S.ai;
+    const aiLines = lines.map((t, i) => {
+      const st = i < phase ? 'done' : i === phase ? 'active' : 'wait';
+      return {
+        t,
+        mark: st === 'done' ? '✓' : st === 'active' ? '▸' : '·',
+        mc: st === 'done' ? '#D98E4F' : st === 'active' ? '#F2EDE1' : '#6E6654',
+        c: st === 'done' ? '#CBC2AC' : st === 'active' ? '#F2EDE1' : '#6E6654',
+        w: st === 'active' ? '700' : '400',
+        op: st === 'wait' ? '0.55' : '1'
+      };
+    });
+
+    return {
+      ...copy,
+      steps, selskaper, skadetyper, teaser, posts, letterParas, toneChips, argListe,
+      hvordan, eksempler, serEtter, faq, tidslinje: tl, aiLines,
+      aiDone: phase >= 5,
+      isStep0: S.step === 0, isStep1: S.step === 1, isStep2: S.step === 2, isStep3: S.step === 3, isStep4: S.step === 4,
+      goSjekk: () => this.setState({ step: 1 }),
+      goAnalyse: () => this.setState({ step: 2 }),
+      goBrev: () => this.setState({ step: 3 }),
+      goSendt: () => this.setState({ step: 4 }),
+      goAnalyseTilbake: () => this.setState({ step: 2 }),
+      estimatTxt: this.fmt(estimat).toUpperCase(),
+      kravChip: '+ ' + this.fmt(krav).replace('−', '').toUpperCase(),
+      estPct: Math.round(estimat / 99300 * 100) + '%',
+      aiRapport: aiStil === 'rapport', aiSubtil: aiStil === 'subtil', aiSynlig: aiStil === 'synlig'
+    };
+  }
+}
+</script>
+</body>
+</html>

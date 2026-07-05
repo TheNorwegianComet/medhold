@@ -1,25 +1,93 @@
-# CODING AGENTS: READ THIS FIRST
+# Medhold
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+**«Ikke ta det første tilbudet fra forsikringsselskapet. Sjekk hva du faktisk har krav på.»**
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+Medhold is a Norwegian consumer web app — a "lowball-fighter" for insurance
+settlements. A user uploads the settlement offer and their policy terms; the app
+explains what the terms actually entitle them to, flags omitted or underpriced
+items with references to specific clauses (§-referanser), and generates a
+structured, polite-but-firm complaint letter. If the company won't budge, it
+explains the path onward (internal complaint → Finansklagenemnda).
 
-## What you should do — IMPORTANT
+This repository is the coded implementation of a design handed off from
+[Claude Design](https://claude.ai/design). The original HTML/CSS prototype and
+the design conversation are preserved under [`project/`](project/) and
+[`chats/`](chats/) for provenance.
 
-**Read the chat transcripts first.** There are 1 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+## Stack
 
-**Read `project/Medhold.dc.html` in full.** The user had this file open when they triggered the handoff, so it's almost certainly the primary design they want built. Read it top to bottom — don't skim. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+- **React 18** + **TypeScript** (strict)
+- **Vite** for dev/build
+- **React Router** for the multi-page routing
+- No UI framework — styling matches the design tokens in
+  [`src/theme.ts`](src/theme.ts) (green/cream palette, Schibsted Grotesk +
+  Source Serif 4).
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+## Getting started
 
-## About the design files
+```bash
+npm install
+npm run dev        # start the dev server
+npm run build      # typecheck + production build
+npm run preview    # serve the production build
+```
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
+## Routes
 
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
+| Path                 | Screen                                                              |
+| -------------------- | ------------------------------------------------------------------ |
+| `/`                  | Landing page — hero, example cases, "what we look for", pris, FAQ   |
+| `/kom-i-gang`        | Get started — email / Vipps sign-in                                |
+| `/sak`               | **Interactive prototype** — the 5-step flow (see below)            |
+| `/eksempelsaker`     | Anonymised example cases (filterable)                              |
+| `/eksempelsak`       | A single example case, told as a before/after story               |
+| `/vilkar`            | Terms reader — a finding highlighted in the policy document        |
+| `/mine-saker`        | Logged-in case dashboard for "Kari Holm"                           |
+| `/finansklagenemnda` | Pre-filled complaint form for the financial complaints board       |
+| `/personvern`        | Privacy / document-handling explainer                             |
+| `/admin`             | Internal console — LLM provider routing & failover                |
 
-## Bundle contents
+## The interactive prototype (`/sak`)
 
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `Lowball-fighter forsikringsoppgjør` project files (HTML prototypes, assets, components)
+A five-step state machine faithful to the original prototype logic:
+
+1. **Last opp** — pick company + damage type, review uploaded documents
+2. **Gratis sjekk** — teaser result (blurred findings) → unlock
+3. **Betaling** — Vipps / card (349 kr)
+4. **Full analyse** — click any _avvik_ (discrepancy) to include/exclude it; the
+   claim total, progress bar and complaint letter all update live
+5. **Klagebrev** — the generated letter; the **Høflig/Bestemt** tone toggle
+   rewrites the intro, closing and argument list
+6. **Veien videre** — timeline through to Finansklagenemnda
+
+The analysis uses the "subtle" AI-visibility treatment (an honest
+_"analysert automatisk — kontroller referansene"_ footnote), which the design
+selected as the shipped default.
+
+## The admin console (`/admin`)
+
+Toggle **"Simuler nedetid"** on any provider (e.g. Anthropic) and the per-task
+fallback chains reroute live: the AKTIV model moves down the chain, a banner
+warns how many tasks were rerouted, and the event log records it. Toggle back
+and traffic returns to the primary order.
+
+## Project structure
+
+```
+src/
+  theme.ts              design tokens (colors, fonts)
+  index.css             reset, base styles, reusable button/hover classes
+  App.tsx               router + scroll manager
+  components/           Logo, SiteNav, SiteFooter
+  pages/                one file per screen
+project/                original Claude Design HTML/CSS prototype (reference)
+chats/                  the design conversation (intent & decisions)
+```
+
+## Notes
+
+- The mobile screens in the original design (iPhone mockups) are implemented as
+  **responsive layouts** rather than a device frame — the same content reflows
+  on small viewports.
+- The design copy ships in the "kampklar" (battle-ready) tone the assistant set
+  as default.

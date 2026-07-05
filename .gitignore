@@ -16,3 +16,8 @@ dist-ssr/
 
 # TS build info
 *.tsbuildinfo
+
+# test artifacts
+test-results/
+playwright-report/
+coverage/

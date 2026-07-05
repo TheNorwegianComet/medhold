@@ -30,7 +30,23 @@ npm install
 npm run dev        # start the dev server
 npm run build      # typecheck + production build
 npm run preview    # serve the production build
+npm test           # unit/component tests (Vitest + Testing Library)
+npm run test:e2e   # end-to-end tests (Playwright; builds and serves first)
 ```
+
+## Tests
+
+- **Unit/component** (`src/**/*.test.tsx`, 37 tests): the `fmt()` currency
+  formatter, case-data consistency (deltas ⇔ posts ⇔ the 99 300 kr total),
+  the wizard's step transitions and `?steg=` deep-link clamping, avvik
+  toggling ⇔ claim math, letter generation per tone and selection (rendered
+  under `StrictMode` where it guards the admin log regression), admin
+  failover chains/banner/log, and every route.
+- **End-to-end** (`e2e/app.spec.ts`, 30 tests): all routes render without JS
+  errors, zero horizontal overflow at 390 px on every page, the full 5-step
+  happy path, live totals, tone rewrite, admin failover + recovery, and the
+  cross-page links (landing → kom-i-gang → sak, sakskort → case story,
+  mine-saker deep links, § references → vilkårsleser → back).
 
 ## Routes
 

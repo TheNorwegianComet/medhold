@@ -4,7 +4,8 @@ import { c, font } from '../theme'
 import { Logo } from '../components/Logo'
 
 // Norwegian currency formatting matching the prototype's fmt().
-function fmt(n: number): string {
+// Exported for unit tests.
+export function fmt(n: number): string {
   const sign = n < 0 ? '−' : ''
   return sign + Math.abs(n).toLocaleString('nb-NO').replace(/[  ]/g, ' ') + ' kr'
 }
@@ -32,7 +33,7 @@ type Post = {
   reason: string
 }
 
-const basePosts: Post[] = [
+export const basePosts: Post[] = [
   { name: 'Rørlegger og sanitærutstyr', ok: true, tilbud: 22000, bor: 22000, reason: 'I tråd med takstrapporten.' },
   { name: 'Maling og overflater', ok: true, tilbud: 10000, bor: 10000, reason: 'I tråd med takstrapporten.' },
   {
@@ -67,7 +68,7 @@ const basePosts: Post[] = [
   },
 ]
 
-const deltas: Record<IncKey, number> = { m: 15000, r: 18500, f: 5800 }
+export const deltas: Record<IncKey, number> = { m: 15000, r: 18500, f: 5800 }
 
 const selskapNames = ['Gjensidige', 'If', 'Tryg', 'Fremtind', 'Annet']
 const skadetypeNames = ['Vannskade', 'Innbrudd', 'Bilskade', 'Reise', 'Bygning']

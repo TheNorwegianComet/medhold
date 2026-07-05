@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { c, font } from '../theme'
 import { Logo } from '../components/Logo'
 
@@ -73,7 +73,10 @@ const selskapNames = ['Gjensidige', 'If', 'Tryg', 'Fremtind', 'Annet']
 const skadetypeNames = ['Vannskade', 'Innbrudd', 'Bilskade', 'Reise', 'Bygning']
 
 export function Prototype() {
-  const [step, setStep] = useState(0)
+  // Deep-linkable step (/sak?steg=3 opens the klagebrev) — clamped to 0–4.
+  const [searchParams] = useSearchParams()
+  const initialStep = Math.min(4, Math.max(0, Number(searchParams.get('steg')) || 0))
+  const [step, setStep] = useState(initialStep)
   const [pay, setPay] = useState(false)
   const [payMetode, setPayMetode] = useState<PayMetode>('vipps')
   const [inc, setInc] = useState<Record<IncKey, boolean>>({ m: true, r: true, f: true })

@@ -12,7 +12,7 @@ export const c = {
 
   // greens
   green: '#1E5C43', // primary brand green
-  greenHover: '#174A36', // primary button hover
+  // NOTE: the primary-button hover (#174A36) lives in index.css (.btn-green:hover)
   greenShadow: '#123A2B', // 3D button drop shadow
   greenDeep: '#12382B', // dark green section background
   greenTint: '#E4EFE6', // light green tint (badges, callouts)
@@ -62,7 +62,4 @@ export const c = {
 export const font = {
   sans: "'Schibsted Grotesk', system-ui, -apple-system, sans-serif",
   serif: "'Source Serif 4', Georgia, serif",
-  mono: 'ui-monospace, Menlo, monospace',
 } as const
-
-export type Colors = typeof c

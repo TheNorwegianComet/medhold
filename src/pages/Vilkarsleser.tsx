@@ -5,7 +5,7 @@ export function Vilkarsleser() {
   return (
     <div className="mh-app">
       <div className="mh-page" style={{ maxWidth: 1120 }}>
-        <div className="dv-card" style={{ width: 1120, background: c.paper, color: c.ink }}>
+        <div style={{ background: c.paper, color: c.ink }}>
           <div
             style={{
               display: 'flex',
@@ -198,8 +198,9 @@ export function Vilkarsleser() {
                 ser her, kan selskapet også slå opp.
               </div>
             </div>
-            <div style={{ padding: '28px 34px', background: '#EFEBE0' }}>
+            <div className="mh-doc-pad" style={{ padding: '28px 34px', background: '#EFEBE0' }}>
               <div
+                className="mh-doc-pad"
                 style={{
                   background: c.white,
                   border: `1px solid ${c.border}`,
@@ -210,6 +211,7 @@ export function Vilkarsleser() {
                 }}
               >
                 <div
+                  className="mh-wrap-sm"
                   style={{
                     display: 'flex',
                     justifyContent: 'space-between',
@@ -274,6 +276,7 @@ export function Vilkarsleser() {
                   }}
                 >
                   <div
+                    className="mh-wrap-sm"
                     style={{
                       display: 'flex',
                       justifyContent: 'space-between',

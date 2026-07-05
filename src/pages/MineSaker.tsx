@@ -225,14 +225,14 @@ export function MineSaker() {
 
                 <div style={{ display: 'flex', gap: 10 }}>
                   <Link
-                    to="/sak"
+                    to="/sak?steg=4"
                     className="btn btn-green"
                     style={{ padding: '11px 20px', borderRadius: 10, fontSize: 14 }}
                   >
                     Åpne saken →
                   </Link>
                   <Link
-                    to="/sak"
+                    to="/sak?steg=3"
                     className="btn btn-ghost"
                     style={{ padding: '11px 20px', borderRadius: 10, fontSize: 14 }}
                   >

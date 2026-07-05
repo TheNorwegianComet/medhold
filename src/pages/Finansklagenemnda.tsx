@@ -38,10 +38,7 @@ export function Finansklagenemnda() {
   return (
     <div className="mh-app">
       <div className="mh-page" style={{ maxWidth: 880 }}>
-        <div
-          className="dv-card"
-          style={{ width: 880, background: c.paper, color: c.ink }}
-        >
+        <div style={{ background: c.paper, color: c.ink }}>
           {/* dark-green header band */}
           <div style={{ background: c.greenDeep, padding: '28px 36px', color: c.cream }}>
             <div

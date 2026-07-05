@@ -14,17 +14,19 @@ import { Admin } from './pages/Admin'
 
 /** Scroll to top on navigation, or to the #hash target when present. */
 function ScrollManager() {
-  const { pathname, hash } = useLocation()
+  const location = useLocation()
+  // location.key changes on every navigation, so re-clicking a hash link
+  // that matches the current URL still scrolls back to the target.
   useEffect(() => {
-    if (hash) {
-      const el = document.getElementById(hash.slice(1))
+    if (location.hash) {
+      const el = document.getElementById(location.hash.slice(1))
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' })
         return
       }
     }
     window.scrollTo(0, 0)
-  }, [pathname, hash])
+  }, [location])
   return null
 }
 

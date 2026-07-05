@@ -117,58 +117,24 @@ p {
   color: #1e5c43;
 }
 
-/* pill chips with hover */
-.pill-hover {
-  transition: background 0.15s ease, border-color 0.15s ease;
-}
-.pill-hover:hover {
-  background: #f3eddf;
-}
-
-/* generic hover-to-tint (cards, dashed boxes) */
+/* hover-to-tint (pill chips, cards, dashed boxes) */
+.pill-hover,
 .tint-hover {
   transition: background 0.15s ease, border-color 0.15s ease;
 }
+.pill-hover:hover,
 .tint-hover:hover {
   background: #f3eddf;
-}
-
-.link-green {
-  color: #1e5c43;
-  font-weight: 700;
-  text-decoration: none;
-}
-.link-green:hover {
-  text-decoration: underline;
-}
-
-/* blink used for the "venter" dot */
-@keyframes mh-blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-/* subtle appear for streamed AI lines */
-@keyframes mh-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* ---- Responsive: collapse the wide desktop grids on small screens ---- */
 @media (max-width: 900px) {
   .mh-collapse {
     grid-template-columns: 1fr !important;
+  }
+  /* keep collapsed grid items from forcing the page wider than the viewport */
+  .mh-collapse > * {
+    min-width: 0;
   }
   .mh-pad {
     padding-left: 20px !important;
@@ -196,8 +162,12 @@ p {
     align-items: flex-start !important;
     gap: 14px;
   }
-  .mh-nav > div:last-child {
+  .mh-nav .mh-nav-links {
     flex-wrap: wrap !important;
     gap: 14px 18px !important;
+  }
+  /* document-like panels (vilkårsleser) get slimmer padding on phones */
+  .mh-doc-pad {
+    padding: 24px 16px !important;
   }
 }

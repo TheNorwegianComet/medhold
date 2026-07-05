@@ -49,14 +49,12 @@ export function Admin() {
   const isDown = (m: string) => !!adminDown[provOf[m]]
 
   const toggle = (p: (typeof provDefs)[number]) => {
-    setAdminDown((s) => {
-      const nowDown = !s[p.id]
-      const entry: LogEntry = nowDown
-        ? { tid: 'Nå nettopp', txt: `${p.name} markert nede (simulering). Oppgaver med ${p.models.join(' / ')} i kjeden hopper over dem automatisk.`, type: 'failover' }
-        : { tid: 'Nå nettopp', txt: `${p.name} frisk igjen etter helsesjekk — trafikken går tilbake til primær rekkefølge.`, type: 'ok' }
-      setAdminLogg((l) => [entry, ...l])
-      return { ...s, [p.id]: nowDown }
-    })
+    const nowDown = !adminDown[p.id]
+    const entry: LogEntry = nowDown
+      ? { tid: 'Nå nettopp', txt: `${p.name} markert nede (simulering). Oppgaver med ${p.models.join(' / ')} i kjeden hopper over dem automatisk.`, type: 'failover' }
+      : { tid: 'Nå nettopp', txt: `${p.name} frisk igjen etter helsesjekk — trafikken går tilbake til primær rekkefølge.`, type: 'ok' }
+    setAdminDown((s) => ({ ...s, [p.id]: nowDown }))
+    setAdminLogg((l) => [entry, ...l])
   }
 
   let omrutet = 0

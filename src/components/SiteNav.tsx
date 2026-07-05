@@ -28,7 +28,7 @@ export function SiteNav({ active = null, cta = 'Sjekk oppgjøret gratis' }: { ac
     >
       <Logo />
       <div
-        className="mh-wrap-sm"
+        className="mh-wrap-sm mh-nav-links"
         style={{ display: 'flex', alignItems: 'center', gap: 28, fontSize: 14.5, fontWeight: 500, color: c.body }}
       >
         <Link className="navlink" to="/#slik-virker-det" style={linkStyle('how')}>

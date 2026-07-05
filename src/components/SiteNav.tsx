@@ -16,7 +16,7 @@ export function SiteNav({ active = null, cta = 'Sjekk oppgjøret gratis' }: { ac
 
   return (
     <div
-      className="mh-pad"
+      className="mh-pad mh-nav"
       style={{
         display: 'flex',
         alignItems: 'center',

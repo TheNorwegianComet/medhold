@@ -190,4 +190,14 @@ p {
     flex-direction: column !important;
     align-items: stretch !important;
   }
+  /* stack the marketing nav: logo row on top, links wrapped below */
+  .mh-nav {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px;
+  }
+  .mh-nav > div:last-child {
+    flex-wrap: wrap !important;
+    gap: 14px 18px !important;
+  }
 }

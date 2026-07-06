@@ -89,7 +89,59 @@ test.describe('the 5-step wizard', () => {
   })
 })
 
-test.describe('admin failover', () => {
+test.describe('admin functionality', () => {
+  test('API key can be replaced after a simulated test call', async ({ page }) => {
+    await page.goto('/admin')
+    await page.getByText('Endre nøkkel').first().click()
+    await page.getByLabel('Ny API-nøkkel for Anthropic').fill('sk-ant-ny-nokkel-e2e1')
+    await page.getByText('Lagre og test').click()
+    await expect(page.getByText(/API-nøkkel oppdatert for Anthropic/)).toBeVisible()
+    await expect(page.getByText('••••e2e1 · OK')).toBeVisible()
+    // persists across reload
+    await page.reload()
+    await expect(page.getByText('••••e2e1 · OK')).toBeVisible()
+  })
+
+  test('a provider can be added and used in a chain', async ({ page }) => {
+    await page.goto('/admin')
+    await page.getByText('+ Legg til leverandør').click()
+    await page.getByLabel('Navn').fill('Cohere')
+    await page.getByLabel('Region').fill('EU · Frankfurt')
+    await page.getByLabel('Modeller').fill('Command R+')
+    await page.getByLabel('API-nøkkel').fill('co-demo-nokkel-123')
+    await page.getByText('Kjør testkall og legg til').click()
+    await expect(page.getByText(/lagt til som leverandør etter vellykket testkall/)).toBeVisible()
+    // route a task to the new model
+    await page.getByText('Endre kjede').first().click()
+    await page.getByRole('combobox').first().selectOption('Command R+')
+    await page.getByText('Lagre kjede').click()
+    await expect(page.getByText(/Kjeden for Vilkårsanalyse endret: Command R\+/)).toBeVisible()
+  })
+
+  test('failover rules are editable and the log can be exported', async ({ page }) => {
+    await page.goto('/admin')
+    await page.getByText('Endre', { exact: true }).click()
+    await page.getByLabel('Bytt ved timeout over (sek)').fill('30')
+    await page.getByText('Lagre', { exact: true }).click()
+    await expect(page.getByText('30 sek')).toBeVisible()
+    await expect(page.getByText('Failover-reglene ble oppdatert.')).toBeVisible()
+
+    const downloadPromise = page.waitForEvent('download')
+    await page.getByText('Eksporter →').click()
+    const download = await downloadPromise
+    expect(download.suggestedFilename()).toBe('medhold-hendelseslogg.json')
+  })
+
+  test('reset restores the demo defaults', async ({ page }) => {
+    await page.goto('/admin')
+    await page.getByText('Endre', { exact: true }).click()
+    await page.getByLabel('Bytt ved timeout over (sek)').fill('55')
+    await page.getByText('Lagre', { exact: true }).click()
+    await expect(page.getByText('55 sek')).toBeVisible()
+    await page.getByText('Tilbakestill demoen').click()
+    await expect(page.getByText('20 sek')).toBeVisible()
+  })
+
   test('simulating downtime reroutes chains, logs once, and recovers', async ({ page }) => {
     await page.goto('/admin')
     const anthropicSwitch = page

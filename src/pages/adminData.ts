@@ -5,6 +5,13 @@
 
 export type KeyStatus = 'ok' | 'testing' | 'error'
 
+/**
+ * How the provider authenticates: OpenAI/Anthropic/Mistral use API keys,
+ * while Google Vertex AI uses a GCP service account (AIza-style API keys
+ * belong to the separate Gemini Developer API, not Vertex).
+ */
+export type CredentialType = 'api_key' | 'service_account'
+
 export type Provider = {
   id: string
   name: string
@@ -12,10 +19,15 @@ export type Provider = {
   models: string[]
   lat: string
   cost: string
-  /** full API key as entered; only the masked form is ever rendered */
+  /** full credential as entered; only the masked form is ever rendered */
   apiKey: string
   keyStatus: KeyStatus
+  credentialType: CredentialType
   custom?: boolean
+}
+
+export function credentialLabel(t: CredentialType): string {
+  return t === 'service_account' ? 'TJENESTEKONTO' : 'API-NØKKEL'
 }
 
 export type TaskChain = {
@@ -47,15 +59,15 @@ export type AdminState = {
 
 export const defaultState: AdminState = {
   providers: [
-    { id: 'anthropic', name: 'Anthropic', region: 'USA · DPA + SCC', models: ['Claude Sonnet 4.5', 'Claude Haiku 4.5'], lat: '1,2 s', cost: '3 940 kr', apiKey: 'sk-ant-demo-a8f2b', keyStatus: 'ok' },
-    { id: 'openai', name: 'OpenAI', region: 'USA · DPA + SCC', models: ['GPT-5.2'], lat: '1,6 s', cost: '1 210 kr', apiKey: 'sk-demo-9dc41a', keyStatus: 'ok' },
-    { id: 'google', name: 'Google Vertex AI', region: 'EU · europe-west4', models: ['Gemini 3 Pro', 'Gemini 3 Flash'], lat: '1,4 s', cost: '860 kr', apiKey: 'AIza-demo-b77e0', keyStatus: 'ok' },
-    { id: 'mistral', name: 'Mistral', region: 'EU · Paris', models: ['Mistral Large 3'], lat: '1,1 s', cost: '470 kr', apiKey: 'mst-demo-c2d9c', keyStatus: 'ok' },
+    { id: 'anthropic', name: 'Anthropic', region: 'USA · DPA + SCC', models: ['Claude Sonnet 5', 'Claude Haiku 4.5'], lat: '1,2 s', cost: '3 940 kr', apiKey: 'sk-ant-demo-a8f2b', keyStatus: 'ok', credentialType: 'api_key' },
+    { id: 'openai', name: 'OpenAI', region: 'USA · DPA + SCC', models: ['GPT-5.5'], lat: '1,6 s', cost: '1 210 kr', apiKey: 'sk-demo-9dc41a', keyStatus: 'ok', credentialType: 'api_key' },
+    { id: 'google', name: 'Google Vertex AI', region: 'EU · europe-west4', models: ['Gemini 3 Pro', 'Gemini 3 Flash'], lat: '1,4 s', cost: '860 kr', apiKey: 'sa-medhold-llm-4f2a77e0', keyStatus: 'ok', credentialType: 'service_account' },
+    { id: 'mistral', name: 'Mistral', region: 'EU · Paris', models: ['Mistral Large 3'], lat: '1,1 s', cost: '470 kr', apiKey: 'mst-demo-c2d9c', keyStatus: 'ok', credentialType: 'api_key' },
   ],
   tasks: [
-    { id: 'vilkar', name: 'Vilkårsanalyse', desc: 'Lange dokumenter · høy presisjon', chain: ['Claude Sonnet 4.5', 'GPT-5.2', 'Gemini 3 Pro'] },
+    { id: 'vilkar', name: 'Vilkårsanalyse', desc: 'Lange dokumenter · høy presisjon', chain: ['Claude Sonnet 5', 'GPT-5.5', 'Gemini 3 Pro'] },
     { id: 'sjekk', name: 'Gratis sjekk', desc: 'Rask triage · lav kost', chain: ['Claude Haiku 4.5', 'Gemini 3 Flash', 'Mistral Large 3'] },
-    { id: 'brev', name: 'Klagebrev', desc: 'Norsk språk · formell tone', chain: ['Claude Sonnet 4.5', 'Gemini 3 Pro', 'GPT-5.2'] },
+    { id: 'brev', name: 'Klagebrev', desc: 'Norsk språk · formell tone', chain: ['Claude Sonnet 5', 'Gemini 3 Pro', 'GPT-5.5'] },
     { id: 'sporsmal', name: 'Spørsmål i analysen', desc: 'Chat · korte svar', chain: ['Claude Haiku 4.5', 'Mistral Large 3', 'Gemini 3 Flash'] },
   ],
   rules: { timeoutSec: 20, errPct: 5, errWinMin: 2, retries: 2, backToPrimaryMin: 10, notify: 'E-post + Slack' },
@@ -66,7 +78,8 @@ export const defaultState: AdminState = {
   ],
 }
 
-const STORAGE_KEY = 'medhold-admin-v1'
+// v2: corrected provider facts (Vertex service account, current model generation)
+const STORAGE_KEY = 'medhold-admin-v2'
 
 export function loadState(): AdminState {
   try {
@@ -75,6 +88,7 @@ export function loadState(): AdminState {
     const parsed = JSON.parse(raw) as AdminState
     // minimal shape check — fall back rather than crash on stale data
     if (!Array.isArray(parsed.providers) || !Array.isArray(parsed.tasks)) return structuredClone(defaultState)
+    if (parsed.providers.some((p) => !p.credentialType)) return structuredClone(defaultState)
     // a "testing" status must not survive a reload
     parsed.providers = parsed.providers.map((p) => ({ ...p, keyStatus: p.keyStatus === 'testing' ? 'ok' : p.keyStatus }))
     return parsed

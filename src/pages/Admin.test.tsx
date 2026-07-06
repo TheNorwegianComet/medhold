@@ -47,7 +47,7 @@ describe('failover simulation', () => {
     expect(
       screen.getByText('1 leverandør nede — 4 oppgaver er rutet om automatisk. Brukerne merker ingenting.'),
     ).toBeInTheDocument()
-    expect(screen.getAllByText('GPT-5.2').length).toBeGreaterThanOrEqual(2)
+    expect(screen.getAllByText('GPT-5.5').length).toBeGreaterThanOrEqual(2)
   })
 
   it('adds exactly ONE log entry per toggle, even under StrictMode', () => {
@@ -118,7 +118,7 @@ describe('providers', () => {
     expect(await screen.findByText('Fyll ut navn, region og minst én modell.')).toBeInTheDocument()
     fireEvent.change(screen.getByLabelText('Navn'), { target: { value: 'X' } })
     fireEvent.change(screen.getByLabelText('Region'), { target: { value: 'EU' } })
-    fireEvent.change(screen.getByLabelText('Modeller'), { target: { value: 'GPT-5.2' } })
+    fireEvent.change(screen.getByLabelText('Modeller'), { target: { value: 'GPT-5.5' } })
     fireEvent.click(screen.getByText('Kjør testkall og legg til'))
     expect(await screen.findByText(/finnes allerede hos en annen leverandør/)).toBeInTheDocument()
   })

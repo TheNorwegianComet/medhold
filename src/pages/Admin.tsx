@@ -9,6 +9,7 @@ import {
   saveState,
   resetState,
   maskKey,
+  credentialLabel,
   nowLabel,
   testApiKey,
 } from './adminData'
@@ -101,7 +102,11 @@ export function Admin() {
     setState((s) =>
       addLogEntries(
         { ...s, providers: s.providers.map((x) => (x.id === p.id ? { ...x, apiKey: draft, keyStatus: 'ok' } : x)) },
-        { tid: nowLabel(), txt: `API-nøkkel oppdatert for ${p.name} — testkall OK (${res.ms} ms).`, type: 'info' },
+        {
+          tid: nowLabel(),
+          txt: `${p.credentialType === 'service_account' ? 'Tjenestekonto-nøkkel' : 'API-nøkkel'} oppdatert for ${p.name} — testkall OK (${res.ms} ms).`,
+          type: 'info',
+        },
       ),
     )
     setKeyEditId(null)
@@ -141,6 +146,7 @@ export function Admin() {
       cost: '0 kr',
       apiKey: addDraft.key,
       keyStatus: 'ok',
+      credentialType: 'api_key',
       custom: true,
     }
     setState((s) =>
@@ -341,7 +347,7 @@ export function Admin() {
                         <div style={{ fontSize: 14, fontWeight: 700 }}>{p.cost}</div>
                       </div>
                       <div>
-                        <div style={{ fontSize: 11, fontWeight: 700, color: c.faint, letterSpacing: '.04em' }}>API-NØKKEL</div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: c.faint, letterSpacing: '.04em' }}>{credentialLabel(p.credentialType)}</div>
                         <div style={{ fontSize: 13, fontWeight: 700, color: c.green }}>{maskKey(p.apiKey)} · OK</div>
                         <span onClick={() => openKeyEditor(p)} style={{ fontSize: 12, fontWeight: 700, color: c.green, cursor: 'pointer' }}>
                           Endre nøkkel
@@ -370,8 +376,8 @@ export function Admin() {
                           type="password"
                           value={keyDraft}
                           onChange={(e) => setKeyDraft(e.target.value)}
-                          placeholder={`Ny API-nøkkel for ${p.name}`}
-                          aria-label={`Ny API-nøkkel for ${p.name}`}
+                          placeholder={p.credentialType === 'service_account' ? `Ny tjenestekonto-nøkkel for ${p.name}` : `Ny API-nøkkel for ${p.name}`}
+                          aria-label={p.credentialType === 'service_account' ? `Ny tjenestekonto-nøkkel for ${p.name}` : `Ny API-nøkkel for ${p.name}`}
                           style={{ ...inputStyle, flex: 1, minWidth: 220 }}
                         />
                         <button onClick={() => saveKey(p)} disabled={keyBusy} style={{ ...smallBtn, background: c.green, color: '#fff', opacity: keyBusy ? 0.7 : 1 }}>

@@ -21,7 +21,7 @@ const outDir = resolve(root, 'dist-demo')
 execSync('npx vite build --outDir dist-demo-assets --base ./', {
   cwd: root,
   stdio: 'inherit',
-  env: { ...process.env, VITE_ROUTER: 'hash' },
+  env: { ...process.env, VITE_ROUTER: 'hash', VITE_DEMO: '1' },
 })
 const assetsDir = resolve(root, 'dist-demo-assets/assets')
 const files = readdirSync(assetsDir)

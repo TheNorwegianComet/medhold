@@ -11,6 +11,7 @@ import { MineSaker } from './pages/MineSaker'
 import { Finansklagenemnda } from './pages/Finansklagenemnda'
 import { Personvern } from './pages/Personvern'
 import { Admin } from './pages/Admin'
+import { DemoNav } from './components/DemoNav'
 
 /** Scroll to top on navigation, or to the #hash target when present. */
 function ScrollManager() {
@@ -34,6 +35,7 @@ export function App() {
   return (
     <>
       <ScrollManager />
+      {import.meta.env.VITE_DEMO === '1' && <DemoNav />}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/sak" element={<Prototype />} />

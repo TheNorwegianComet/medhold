@@ -4,6 +4,8 @@ node_modules/
 # build output
 dist/
 dist-ssr/
+dist-demo/
+dist-demo-assets/
 
 # local env / logs
 *.local

@@ -1,0 +1,173 @@
+/* ---- Reset & base ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: #efebe2;
+  color: #211d15;
+  font-family: 'Schibsted Grotesk', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.4;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+/* ---- App shell: center every "canvas" page like the design canvas ---- */
+.mh-app {
+  min-height: 100vh;
+  background: #efebe2;
+  display: flex;
+  justify-content: center;
+}
+
+.mh-page {
+  width: 100%;
+  max-width: 1280px;
+  background: #faf6ee;
+  color: #211d15;
+  min-height: 100vh;
+}
+
+/* ---- Reusable interactive elements (hover states, since React inline
+   styles can't express :hover) ---- */
+.btn {
+  display: inline-block;
+  border: none;
+  border-radius: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  font-family: inherit;
+}
+
+.btn-green {
+  background: #1e5c43;
+  color: #fff;
+  box-shadow: 0 2px 0 #123a2b;
+}
+.btn-green:hover {
+  background: #174a36;
+}
+
+.btn-paper {
+  background: #f5efe2;
+  color: #12382b;
+}
+.btn-paper:hover {
+  background: #fff;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1.5px solid #c9d8ce;
+  color: #1e5c43;
+  box-shadow: none;
+}
+.btn-ghost:hover {
+  background: #eff4ef;
+}
+
+.btn-outline {
+  background: #fff;
+  border: 1.5px solid #ddd5c2;
+  color: #211d15;
+  box-shadow: none;
+}
+.btn-outline:hover {
+  background: #f3eddf;
+}
+
+/* nav links */
+.navlink {
+  color: #544e42;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.navlink:hover {
+  color: #1e5c43;
+}
+
+/* hover-to-tint (pill chips, cards, dashed boxes) */
+.pill-hover,
+.tint-hover {
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.pill-hover:hover,
+.tint-hover:hover {
+  background: #f3eddf;
+}
+
+/* ---- Responsive: collapse the wide desktop grids on small screens ---- */
+@media (max-width: 900px) {
+  .mh-collapse {
+    grid-template-columns: 1fr !important;
+  }
+  /* keep collapsed grid items from forcing the page wider than the viewport */
+  .mh-collapse > * {
+    min-width: 0;
+  }
+  .mh-pad {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .mh-hide-sm {
+    display: none !important;
+  }
+  .mh-wrap-sm {
+    flex-wrap: wrap !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .mh-collapse-2 {
+    grid-template-columns: 1fr !important;
+  }
+  .mh-stack-sm {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  /* stack the marketing nav: logo row on top, links wrapped below */
+  .mh-nav {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px;
+  }
+  .mh-nav .mh-nav-links {
+    flex-wrap: wrap !important;
+    gap: 14px 18px !important;
+  }
+  /* document-like panels (vilkårsleser) get slimmer padding on phones */
+  .mh-doc-pad {
+    padding: 24px 16px !important;
+  }
+}
